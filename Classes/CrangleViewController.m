@@ -36,6 +36,19 @@
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if ([textField isEqual:addressField])
+	{
+		[emailField becomeFirstResponder];
+	}
+		
+	if ([textField isEqual:emailField])
+	{
+		[textField resignFirstResponder];
+	}
+	return NO;
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

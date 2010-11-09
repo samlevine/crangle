@@ -23,6 +23,7 @@
 
 -(IBAction) sendButtonClicked: (id) sender;
 - (void) sendEmailTo:(NSString *)to withSubject:(NSString *) subject withBody:(NSString *)body;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end
 
