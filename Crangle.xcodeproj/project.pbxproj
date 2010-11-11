@@ -17,6 +17,9 @@
 		28D7ACF80DDB3853001CB0EB /* CrangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CrangleViewController.m */; };
 		E57CC936128901670098394E /* plusicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E57CC935128901670098394E /* plusicon.jpg */; };
 		E57CC9B1128A556D0098394E /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E57CC9B0128A556D0098394E /* PlusIcon.png */; };
+		E57CCA39128BA25B0098394E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA38128BA25B0098394E /* CoreLocation.framework */; };
+		E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */; };
+		E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA56128BA4E90098394E /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		8D1107310486CEB800E47090 /* Crangle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Crangle-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		E57CC935128901670098394E /* plusicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plusicon.jpg; sourceTree = "<group>"; };
 		E57CC9B0128A556D0098394E /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
+		E57CCA38128BA25B0098394E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Crangle.xcdatamodel; sourceTree = "<group>"; };
+		E57CCA56128BA4E90098394E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,8 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				E57CCA39128BA25B0098394E /* CoreLocation.framework in Frameworks */,
+				E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +103,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */,
 				E57CC935128901670098394E /* plusicon.jpg */,
 				2899E5210DE3E06400AC0155 /* CrangleViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -109,6 +118,8 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				E57CCA38128BA25B0098394E /* CoreLocation.framework */,
+				E57CCA56128BA4E90098394E /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,6 +190,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* CrangleAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* CrangleViewController.m in Sources */,
+				E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

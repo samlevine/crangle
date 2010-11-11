@@ -13,6 +13,10 @@
 @interface CrangleAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     CrangleViewController *viewController;
+	
+//	NSPersistentStoreCoordinator *persistentStoreCoordinator;
+//    NSManagedObjectModel *managedObjectModel;
+//    NSManagedObjectContext *managedObjectContext;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

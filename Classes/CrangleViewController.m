@@ -10,9 +10,13 @@
 
 @implementation CrangleViewController
 
-@synthesize destinationControl, sendButton, addressField, emailField, contactsButton;
+@synthesize destinationControl, sendButton, addressField, emailField, contactsButton, locationManager;
+//,eventsArray, managedObjectContext, locationManager;
 
 - (void)viewDidLoad {
+	
+	[super viewDidLoad];
+	// FIXME
 	UIButton *_contactsButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateNormal];
 	[_contactsButton setImage:[UIImage imageNamed:@"Plusicon.png"] forState:UIControlStateSelected];
@@ -21,7 +25,25 @@
 	//[_contactsButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
 	emailField.rightView = _contactsButton;
 	emailField.rightViewMode = UITextFieldViewModeAlways;
+	// ENDFIXME
 	
+	[[self locationManager] startUpdatingLocation];
+}
+
+/**
+ Return a location manager -- create one if necessary.
+ */
+- (CLLocationManager *)locationManager {
+	
+    if (locationManager != nil) {
+		return locationManager;
+	}
+	
+	locationManager = [[CLLocationManager alloc] init];
+	[locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+	[locationManager setDelegate:self];
+	
+	return locationManager;
 }
 
 - (void)sendButtonClicked: (id)sender {
