@@ -10,14 +10,26 @@
 
 @implementation CrangleViewController
 
-@synthesize destinationControl, sendButton, addressField, emailField;
+@synthesize destinationControl, sendButton, addressField, emailField, contactsButton;
+
+- (void)viewDidLoad {
+	UIButton *_contactsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateNormal];
+	[_contactsButton setImage:[UIImage imageNamed:@"Plusicon.png"] forState:UIControlStateSelected];
+	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateHighlighted];
+	//_contactsButton.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0);
+	//[_contactsButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+	emailField.rightView = _contactsButton;
+	emailField.rightViewMode = UITextFieldViewModeAlways;
+	
+}
 
 - (void)sendButtonClicked: (id)sender {
 
-	NSLog(@"address: %@, e-mail: %@, transportation: %@", 
-		  [addressField text],
-		  [emailField text],
-		  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]);
+	//NSLog(@"address: %@, e-mail: %@, transportation: %@", 
+	//	  [addressField text],
+	//	  [emailField text],
+	//	  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]);
 	[self sendEmailTo:[emailField text]
 		  withSubject:[addressField text]
 			 withBody:[destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]];
@@ -58,12 +70,14 @@
 }
 
 - (void)viewDidUnload {
+	contactsButton = nil;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
 
 
 - (void)dealloc {
+	[contactsButton release];
     [super dealloc];
 }
 

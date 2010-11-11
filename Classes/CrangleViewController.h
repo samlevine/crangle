@@ -13,6 +13,8 @@
 	IBOutlet UIBarButtonItem *sendButton;
 	IBOutlet UITextField *addressField;
 	IBOutlet UITextField *emailField;
+	UIButton *contactsButton;
+	
 
 }
 
@@ -20,6 +22,7 @@
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *sendButton;
 @property (nonatomic, retain) IBOutlet UITextField *addressField;
 @property (nonatomic, retain) IBOutlet UITextField *emailField;
+@property (nonatomic, retain) UIButton *contactsButton;
 
 -(IBAction) sendButtonClicked: (id) sender;
 - (void) sendEmailTo:(NSString *)to withSubject:(NSString *) subject withBody:(NSString *)body;
