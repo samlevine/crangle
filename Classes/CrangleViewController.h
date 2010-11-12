@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CrangleAppDelegate.h"
+
 
 @interface CrangleViewController : UIViewController <CLLocationManagerDelegate> {
 	IBOutlet UISegmentedControl *destinationControl;
@@ -30,8 +32,8 @@
 @property (nonatomic, retain) UIButton *contactsButton;
 
 // for using core data later
-//@property (nonatomic, retain) NSMutableArray *eventsArray;
-//@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSMutableArray *eventsArray;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 
@@ -40,7 +42,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 // for core data model later
-//- (void)addEvent;
+- (void)addEvent;
 
 @end
 

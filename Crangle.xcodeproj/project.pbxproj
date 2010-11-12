@@ -20,6 +20,7 @@
 		E57CCA39128BA25B0098394E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA38128BA25B0098394E /* CoreLocation.framework */; };
 		E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */; };
 		E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA56128BA4E90098394E /* CoreData.framework */; };
+		E57CCA5F128BA7B60098394E /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA5E128BA7B60098394E /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		E57CCA38128BA25B0098394E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Crangle.xcdatamodel; sourceTree = "<group>"; };
 		E57CCA56128BA4E90098394E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E57CCA5D128BA7B60098394E /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		E57CCA5E128BA7B60098394E /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E57CCA5D128BA7B60098394E /* Event.h */,
+				E57CCA5E128BA7B60098394E /* Event.m */,
 				1D3623240D0F684500981E51 /* CrangleAppDelegate.h */,
 				1D3623250D0F684500981E51 /* CrangleAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* CrangleViewController.h */,
@@ -191,6 +196,7 @@
 				1D3623260D0F684500981E51 /* CrangleAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* CrangleViewController.m in Sources */,
 				E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */,
+				E57CCA5F128BA7B60098394E /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

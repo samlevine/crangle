@@ -7,11 +7,13 @@
 //
 
 #import "CrangleViewController.h"
+#import "CrangleAppDelegate.h"
+#import "Event.h"
 
 @implementation CrangleViewController
 
-@synthesize destinationControl, sendButton, addressField, emailField, contactsButton, locationManager;
-//,eventsArray, managedObjectContext, locationManager;
+@synthesize destinationControl, sendButton, addressField, emailField, contactsButton, eventsArray, 
+			managedObjectContext, locationManager;
 
 - (void)viewDidLoad {
 	
@@ -28,6 +30,36 @@
 	// ENDFIXME
 	
 	[[self locationManager] startUpdatingLocation];
+	
+	
+	/*
+	 Fetch existing events.
+	 Create a fetch request; find the Event entity and assign it to the request; add a sort descriptor; then execute the fetch.
+	 */
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext];
+	[request setEntity:entity];
+	
+	// Order the events by creation date, most recent first.
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
+	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+	[request setSortDescriptors:sortDescriptors];
+	[sortDescriptor release];
+	[sortDescriptors release];
+	
+	// Execute the fetch -- create a mutable copy of the result.
+	NSError *error = nil;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	if (mutableFetchResults == nil) {
+		// Handle the error.
+	}
+	
+	// Set self's events array to the mutable array, then clean up.
+	[self setEventsArray:mutableFetchResults];
+	[mutableFetchResults release];
+	[request release];
+	
+	
 }
 
 /**
@@ -83,6 +115,46 @@
 	return NO;
 }
 
+- (void)addEvent {
+	
+	// If it's not possible to get a location, then return.
+	CLLocation *location = [locationManager location];
+	if (!location) {
+		return;
+	}
+	
+	/*
+	 Create a new instance of the Event entity.
+	 */
+	Event *event = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];
+	
+	// Configure the new event with information from the location.
+	CLLocationCoordinate2D coordinate = [location coordinate];
+	CLLocationSpeed speed = [location speed];
+	[event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
+	[event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
+	[event setKph:[NSNumber numberWithDouble:speed]];
+	NSLog( @"%@", [location description]);
+	// Should be the location's timestamp, but this will be constant for simulator.
+	// [event setCreationDate:[location timestamp]];
+	[event setCreationDate:[NSDate date]];
+	
+	// Commit the change.
+	NSError *error;
+	if (![managedObjectContext save:&error]) {
+		// Handle the error.
+	}
+	
+	/*
+	 Since this is a new event, and events are displayed with most recent events at the top of the list,
+	 add the new event to the beginning of the events array; then redisplay the table view.
+	 */
+    [eventsArray insertObject:event atIndex:0];
+	//NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+	//[self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+	//[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -93,8 +165,10 @@
 
 - (void)viewDidUnload {
 	contactsButton = nil;
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+	// Release any properties that are loaded in viewDidLoad or can be recreated lazily.
+	self.eventsArray = nil;
+	self.locationManager = nil;
+	//self.addButton = nil;
 }
 
 
