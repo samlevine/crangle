@@ -1,0 +1,2 @@
+/Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m: In function '-[CrangleAppDelegate application:didFinishLaunchingWithOptions:]':
+/Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m:33: error: object cannot be set - either readonly property or no setter found

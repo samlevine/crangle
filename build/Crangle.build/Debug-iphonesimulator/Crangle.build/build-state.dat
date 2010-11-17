@@ -1,0 +1,385 @@
+TCrangle
+v7
+r0
+t311661611.726150
+cCheck dependencies
+cProcessInfoPlistFile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Info.plist Crangle-Info.plist
+cCompileXIB /Users/scyon/Code/ios/Crangle/MainWindow.xib
+cCompileXIB /Users/scyon/Code/ios/Crangle/CrangleViewController.xib
+cCpResource build/Debug-iphonesimulator/Crangle.app/plusicon.jpg plusicon.jpg
+cCpResource build/Debug-iphonesimulator/Crangle.app/PlusIcon.png PlusIcon.png
+cProcessPCH /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch.gch Crangle_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cDataModelCompile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle.mom /Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel
+cCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/main.o /Users/scyon/Code/ios/Crangle/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleAppDelegate.o /Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleViewController.o /Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Event.o /Users/scyon/Code/ios/Crangle/Classes/Event.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle normal i386
+cGenerateDSYMFile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app.dSYM /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle
+cTouch /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk
+c000000004C6C30170000000000000110
+t1282158615
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004C5A4E0B00000000001D2EC0
+t1280986635
+s1912512
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004C5A4DED000000000000046B
+t1280986605
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004C5A4DB60000000000295900
+t1280986550
+s2709760
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c000000004C6C2FF1000000000006B7E0
+t1282158577
+s440288
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
+c000000004C6C2FEA00000000000001D0
+t1282158570
+s464
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004C5A4DB0000000000029D580
+t1280986544
+s2741632
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004C5A4DA10000000000001466
+t1280986529
+s5222
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004C6241ED00000000000009CD
+t1281507821
+s2509
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004C6242840000000001E228C0
+t1281507972
+s31598784
+
+N/Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.h
+c000000004CE35B8200000000000007EA
+t1289968514
+s2026
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m
+c000000004CE35B810000000000001AA9
+t1289968513
+s6825
+i"CrangleAppDelegate.h"
+i"CrangleViewController.h"
+
+N/Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.h
+c000000004CE35B7E00000000000009CD
+t1289968510
+s2509
+i<UIKit/UIKit.h>
+i<CoreLocation/CoreLocation.h>
+i"CrangleAppDelegate.h"
+
+N/Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m
+c000000004CE35B350000000000001D18
+t1289968437
+s7448
+i"CrangleViewController.h"
+i"CrangleAppDelegate.h"
+i"Event.h"
+
+N/Users/scyon/Code/ios/Crangle/Classes/Event.h
+c000000004CAD37330000000000000ADE
+t1286420275
+s2782
+
+N/Users/scyon/Code/ios/Crangle/Classes/Event.m
+c000000004CAD37330000000000000A65
+t1286420275
+s2661
+i"Event.h"
+
+N/Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel
+c000000004CAD37330000000000000088
+t1286420275
+s136
+
+N/Users/scyon/Code/ios/Crangle/CrangleViewController.xib
+c000000004CD2240C00000000000073BC
+t1288840204
+s29628
+
+N/Users/scyon/Code/ios/Crangle/Crangle_Prefix.pch
+c000000004CDCAC7800000000000000D6
+t1289530488
+s214
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/scyon/Code/ios/Crangle/MainWindow.xib
+c000000004CD0C2650000000000004E29
+t1288749669
+s20009
+
+N/Users/scyon/Code/ios/Crangle/PlusIcon.png
+c000000004CDA1D6B00000000000010E0
+t1289362795
+s4320
+
+N/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Crangle.LinkFileList
+c000000004CDB706300000000000001E4
+t1289449571
+s484
+
+N/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleAppDelegate.o
+t1289968811
+s60292
+
+N/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleViewController.o
+t1289968811
+s69380
+
+N/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Event.o
+t1289885359
+s5276
+
+N/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/main.o
+t1289968811
+s6284
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app
+t1289968811
+s340
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app.dSYM
+t1289968811
+s102
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle
+t1289968811
+s32488
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle.mom
+t1289448853
+s3293
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/CrangleViewController.nib
+t1289446889
+s4451
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Info.plist
+t1289446888
+s590
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/MainWindow.nib
+t1288749679
+s1681
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/PkgInfo
+t1289446888
+s8
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/PlusIcon.png
+t1289446888
+s4320
+
+N/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/plusicon.jpg
+t1289446888
+s3341
+
+N/Users/scyon/Code/ios/Crangle/main.m
+c000000004CE35B7C0000000000000567
+t1289968508
+s1383
+i<UIKit/UIKit.h>
+
+N/Users/scyon/Code/ios/Crangle/plusicon.jpg
+c000000004CD8C98F0000000000000D0D
+t1289275791
+s3341
+
+N/var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-aeyxauvjlcyobbeabrvivlccpnnd/Crangle_Prefix.pch.gch
+t1289530521
+s16080688
+
+N/var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch.gch
+t1289885359
+s16080688
+
+NCrangle-Info.plist
+c000000004CD216A50000000000000372
+t1288836773
+s882
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies311661611#311661611#0(0"0(0#1#0"8684098656#0"0#
+
+CCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleAppDelegate.o /Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s311661611.347455
+e311661611.587466
+r1
+xCompileC
+xbuild/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleAppDelegate.o
+x/Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@66"Compile /Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m311661611#311661611#0(0"0(0#0#58"/Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m8684263712#1913"    cd /Users/scyon/Code/ios/Crangle    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-generated-files.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-own-target-headers.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-all-target-headers.hmap -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-project-headers.hmap -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -I/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/include -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources/i386 -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources -include /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch -c /Users/scyon/Code/ios/Crangle/Classes/CrangleAppDelegate.m -o /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleAppDelegate.o0#
+
+CCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleViewController.o /Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s311661611.497593
+e311661611.638720
+r1
+xCompileC
+xbuild/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleViewController.o
+x/Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@69"Compile /Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m311661611#311661611#0(0"0(0#0#61"/Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m8679052384#1919"    cd /Users/scyon/Code/ios/Crangle    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-generated-files.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-own-target-headers.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-all-target-headers.hmap -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-project-headers.hmap -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -I/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/include -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources/i386 -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources -include /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch -c /Users/scyon/Code/ios/Crangle/Classes/CrangleViewController.m -o /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleViewController.o0#
+
+CCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Event.o /Users/scyon/Code/ios/Crangle/Classes/Event.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s311578159.262845
+e311578159.331812
+r1
+xCompileC
+xbuild/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Event.o
+x/Users/scyon/Code/ios/Crangle/Classes/Event.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@53"Compile /Users/scyon/Code/ios/Crangle/Classes/Event.m311578159#311578159#0(0"0(0#0#45"/Users/scyon/Code/ios/Crangle/Classes/Event.m8685664640#1887"    cd /Users/scyon/Code/ios/Crangle    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-generated-files.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-own-target-headers.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-all-target-headers.hmap -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-project-headers.hmap -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -I/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/include -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources/i386 -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources -include /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch -c /Users/scyon/Code/ios/Crangle/Classes/Event.m -o /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Event.o0#
+
+CCompileC build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/main.o /Users/scyon/Code/ios/Crangle/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s311661611.242483
+e311661611.497484
+r1
+xCompileC
+xbuild/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/main.o
+x/Users/scyon/Code/ios/Crangle/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@44"Compile /Users/scyon/Code/ios/Crangle/main.m311661611#311661611#0(0"0(0#0#36"/Users/scyon/Code/ios/Crangle/main.m8630269696#1877"    cd /Users/scyon/Code/ios/Crangle    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-generated-files.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-own-target-headers.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-all-target-headers.hmap -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-project-headers.hmap -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -I/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/include -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources/i386 -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources -include /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch -c /Users/scyon/Code/ios/Crangle/main.m -o /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/scyon/Code/ios/Crangle/CrangleViewController.xib
+s311139688.902263
+e311139689.607041
+r1
+xCompileXIB
+x/Users/scyon/Code/ios/Crangle/CrangleViewController.xib
+lSLF07#2@36"CompileXIB CrangleViewController.xib311139688#311139689#0(0"0(0#0#55"/Users/scyon/Code/ios/Crangle/CrangleViewController.xib8669970496#627"    cd /Users/scyon/Code/ios/Crangle    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.1    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/CrangleViewController.nib /Users/scyon/Code/ios/Crangle/CrangleViewController.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk0#
+
+CCompileXIB /Users/scyon/Code/ios/Crangle/MainWindow.xib
+s310442479.117479
+e310442479.516812
+r1
+xCompileXIB
+x/Users/scyon/Code/ios/Crangle/MainWindow.xib
+lSLF07#2@25"CompileXIB MainWindow.xib310442479#310442479#0(0"0(0#0#44"/Users/scyon/Code/ios/Crangle/MainWindow.xib8596384896#605"    cd /Users/scyon/Code/ios/Crangle    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 4.1    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/MainWindow.nib /Users/scyon/Code/ios/Crangle/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk0#
+
+CCpResource build/Debug-iphonesimulator/Crangle.app/PlusIcon.png PlusIcon.png
+s311139688.914886
+e311139688.929435
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/Crangle.app/PlusIcon.png
+xPlusIcon.png
+lSLF07#2@17"Copy PlusIcon.png311139688#311139689#0(0"0(0#0#42"/Users/scyon/Code/ios/Crangle/PlusIcon.png8670517088#491"    cd /Users/scyon/Code/ios/Crangle    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/scyon/Code/ios/Crangle/PlusIcon.png /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app0#
+
+CCpResource build/Debug-iphonesimulator/Crangle.app/plusicon.jpg plusicon.jpg
+s311139688.904335
+e311139688.962218
+r1
+xCpResource
+xbuild/Debug-iphonesimulator/Crangle.app/plusicon.jpg
+xplusicon.jpg
+lSLF07#2@17"Copy plusicon.jpg311139688#311139689#0(0"0(0#0#42"/Users/scyon/Code/ios/Crangle/plusicon.jpg8670730848#491"    cd /Users/scyon/Code/ios/Crangle    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/scyon/Code/ios/Crangle/plusicon.jpg /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app0#
+
+CDataModelCompile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle.mom /Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel
+s311141653.629454
+e311141653.722353
+r1
+xDataModelCompile
+x/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle.mom
+x/Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel
+lSLF07#2@57"Compile /Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel311141653#311141653#0(0"0(0#0#49"/Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel8659601696#419"    cd /Users/scyon/Code/ios/Crangle    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.6 /Users/scyon/Code/ios/Crangle/Crangle.xcdatamodel /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle.mom0#
+
+CGenerateDSYMFile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app.dSYM /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle
+s311661611.677381
+e311661611.719117
+r1
+xGenerateDSYMFile
+x/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app.dSYM
+x/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle
+lSLF07#2@109"GenerateDSYMFile build/Debug-iphonesimulator/Crangle.app.dSYM build/Debug-iphonesimulator/Crangle.app/Crangle311661611#311661611#0(0"0(0#0#77"/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle8696651712#418"    cd /Users/scyon/Code/ios/Crangle    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/usr/bin/dsymutil /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle -o /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app.dSYM0#
+
+CLd /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle normal i386
+s311661611.638819
+e311661611.677254
+r1
+xLd
+x/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle
+xnormal
+xi386
+lSLF07#2@82"Link /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle311661611#311661611#0(0"0(0#0#0"8697751712#961"    cd /Users/scyon/Code/ios/Crangle    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -L/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -filelist /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/Crangle.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreLocation -framework CoreData -o /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle0#
+
+CProcessInfoPlistFile /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Info.plist Crangle-Info.plist
+s311139688.876740
+e311139688.901980
+r1
+xProcessInfoPlistFile
+x/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Info.plist
+xCrangle-Info.plist
+lSLF07#2@26"Process Crangle-Info.plist311139688#311139689#0(0"0(0#0#48"/Users/scyon/Code/ios/Crangle/Crangle-Info.plist8670455232#514"    cd /Users/scyon/Code/ios/Crangle    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    builtin-infoPlistUtility Crangle-Info.plist -genpkginfo /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Info.plist0#
+
+CProcessPCH /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-aeyxauvjlcyobbeabrvivlccpnnd/Crangle_Prefix.pch.gch Crangle_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s311223320.390572
+e311223321.852928
+r1
+xProcessPCH
+x/var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-aeyxauvjlcyobbeabrvivlccpnnd/Crangle_Prefix.pch.gch
+xCrangle_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@29"Precompile Crangle_Prefix.pch311223320#311223321#0(0"0(0#0#48"/Users/scyon/Code/ios/Crangle/Crangle_Prefix.pch8666202240#1778"    cd /Users/scyon/Code/ios/Crangle    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-generated-files.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-own-target-headers.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-all-target-headers.hmap -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-project-headers.hmap -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -I/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/include -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources/i386 -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources -c /Users/scyon/Code/ios/Crangle/Crangle_Prefix.pch -o /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-aeyxauvjlcyobbeabrvivlccpnnd/Crangle_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch.gch Crangle_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s311578157.788834
+e311578159.060419
+r1
+xProcessPCH
+x/var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch.gch
+xCrangle_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@29"Precompile Crangle_Prefix.pch311578157#311578159#0(0"0(0#0#48"/Users/scyon/Code/ios/Crangle/Crangle_Prefix.pch8685199328#1778"    cd /Users/scyon/Code/ios/Crangle    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.1.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40100 -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-generated-files.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-own-target-headers.hmap -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-all-target-headers.hmap -iquote /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Crangle-project-headers.hmap -F/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator -I/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/include -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources/i386 -I/Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/DerivedSources -c /Users/scyon/Code/ios/Crangle/Crangle_Prefix.pch -o /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-ajuwceszhgzfynhdatxmuchjircc/Crangle_Prefix.pch.gch0#
+
+CTouch /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app
+s311661611.719464
+e311661611.726104
+r1
+xTouch
+x/Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app
+lSLF07#2@75"Touch /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app311661611#311661611#0(0"0(0#0#0"8699087712#322"    cd /Users/scyon/Code/ios/Crangle    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/opt/local/bin:/usr/local/git/bin"    /usr/bin/touch -c /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app0#
+

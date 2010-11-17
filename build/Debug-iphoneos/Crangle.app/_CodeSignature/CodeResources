@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>files</key>
+	<dict>
+		<key>Crangle.mom</key>
+		<data>
+		FCBNCsbRnarvQeF1ImBcu2XYs+s=
+		</data>
+		<key>CrangleViewController.nib</key>
+		<data>
+		Ev4rzHcPorBBDyS3pTFXQ4V17pU=
+		</data>
+		<key>MainWindow.nib</key>
+		<data>
+		x5FbkRS0sLQo/HqpNWgVaqEj3YM=
+		</data>
+		<key>PkgInfo</key>
+		<data>
+		n57qDP4tZfLD1rCS43W0B4LQjzE=
+		</data>
+		<key>PlusIcon.png</key>
+		<data>
+		loxk968NwYaHz55lQa4evyyRUmo=
+		</data>
+		<key>embedded.mobileprovision</key>
+		<data>
+		2FGbRceWdjfRWGZNkNERstwY5NE=
+		</data>
+		<key>plusicon.jpg</key>
+		<data>
+		igdzT0dwM+GIZsZVBroqXRF2/v4=
+		</data>
+	</dict>
+	<key>rules</key>
+	<dict>
+		<key>.*</key>
+		<true/>
+		<key>Info.plist</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>10</real>
+		</dict>
+		<key>ResourceRules.plist</key>
+		<dict>
+			<key>omit</key>
+			<true/>
+			<key>weight</key>
+			<real>100</real>
+		</dict>
+	</dict>
+</dict>
+</plist>

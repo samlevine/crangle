@@ -1,0 +1,11 @@
+f19f2b8a70fd58c912abe64abddbbd80 b504dcd9d78a9940bc82e492f74f8917 ffffffffffffffffffffffffffffffff 238 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app
+000000004cd0c2650000000000001a45 1d3e91f755cce02aee31ad61b5dc00ee ffffffffffffffffffffffffffffffff 1269 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/CrangleViewController.nib
+000000004cd0c2650000000000004e29 27239499ad4b82a495c05fa9172eca6c ffffffffffffffffffffffffffffffff 1681 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/MainWindow.nib
+00000000000000000000000000000000 3998f19f7107ed1f243a33d09736d10e ffffffffffffffffffffffffffffffff 8 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/PkgInfo
+00000000000000000000000000000000 3998f19f7107ed1f243a33d09736d10e ffffffffffffffffffffffffffffffff 591 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Info.plist
+00000000000000000000000000000000 25315ffca273b6163d2ee97150ff2d5b ffffffffffffffffffffffffffffffff 102 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app.dSYM
+1b82eb14ada60c16c8c83f37e2e7319a d000c5f025dc3651a1922bb5fdce12f4 ffffffffffffffffffffffffffffffff 17012 /Users/scyon/Code/ios/Crangle/build/Debug-iphonesimulator/Crangle.app/Crangle
+f122aa320f437c6b074f3fded5726cfa 4602b80ec00e0b173a43dfcdac7eeedd ffffffffffffffffffffffffffffffff 34432 /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleViewController.o
+f122aa320ff1ffe3074f3fded5726be1 4f8df9600ebf42ea0a343d4506388a5d ffffffffffffffffffffffffffffffff 47768 /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/CrangleAppDelegate.o
+f122aa324393be0e074f3fded57268c5 e32f004820380af8fff0e2619c319f94 ffffffffffffffffffffffffffffffff 6284 /Users/scyon/Code/ios/Crangle/build/Crangle.build/Debug-iphonesimulator/Crangle.build/Objects-normal/i386/main.o
+000000004ce8ce290000000000001d1c f122aa320fc9f3af074f3fded5727d7e ffffffffffffffffffffffffffffffff 15211536 /var/folders/Vw/Vwp-P2kzEeKEhnxhum5at++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Crangle_Prefix-aeyxauvjlcyobbeabrvivlccpnnd/Crangle_Prefix.pch.gch
