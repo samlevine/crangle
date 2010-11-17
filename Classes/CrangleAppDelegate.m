@@ -25,6 +25,15 @@
     // Add the view controller's view to the window and display.
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
+	
+	NSManagedObjectContext *context = [self managedObjectContext];
+	if (!context) {
+		// Handle the error.
+	}
+	
+
+	[viewController setManagedObjectContext:context];
+	
 
     return YES;
 }
@@ -60,11 +69,32 @@
 }
 
 
+/**
+ applicationWillTerminate: saves changes in the application's managed object context before the application terminates.
+ */
 - (void)applicationWillTerminate:(UIApplication *)application {
-    /*
-     Called when the application is about to terminate.
-     See also applicationDidEnterBackground:.
-     */
+	
+    NSError *error;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+			// Handle the error.
+        } 
+    }
+}
+
+#pragma mark -
+#pragma mark Saving
+
+/**
+ Performs the save action for the application, which is to send the save:
+ message to the application's managed object context.
+ */
+- (IBAction)saveAction:(id)sender {
+	
+    NSError *error;
+    if (![[self managedObjectContext] save:&error]) {
+		// Handle error
+    }
 }
 
 #pragma mark -

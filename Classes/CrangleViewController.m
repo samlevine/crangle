@@ -18,6 +18,10 @@
 - (void)viewDidLoad {
 	
 	[super viewDidLoad];
+	
+	
+	
+	
 	// FIXME
 	UIButton *_contactsButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateNormal];
@@ -31,33 +35,11 @@
 	
 	[[self locationManager] startUpdatingLocation];
 	
-	
-	/*
-	 Fetch existing events.
-	 Create a fetch request; find the Event entity and assign it to the request; add a sort descriptor; then execute the fetch.
-	 */
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:managedObjectContext];
-	[request setEntity:entity];
-	
-	// Order the events by creation date, most recent first.
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
-	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-	[request setSortDescriptors:sortDescriptors];
-	[sortDescriptor release];
-	[sortDescriptors release];
-	
-	// Execute the fetch -- create a mutable copy of the result.
-	NSError *error = nil;
-	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	if (mutableFetchResults == nil) {
-		// Handle the error.
-	}
-	
-	// Set self's events array to the mutable array, then clean up.
-	[self setEventsArray:mutableFetchResults];
-	[mutableFetchResults release];
-	[request release];
+	[self addEvent];
+
+	 
+	 
+	 
 	
 	
 }
@@ -84,6 +66,48 @@
 	//	  [addressField text],
 	//	  [emailField text],
 	//	  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]);
+	
+	
+	
+	// If it's not possible to get a location, then return.
+	CLLocation *location = [locationManager location];
+	if (!location) {
+		return;
+	}
+	
+	[self addEvent];
+	
+	
+	/*
+	 Fetch existing events.
+	 Create a fetch request; find the Event entity and assign it to the request; add a sort descriptor; then execute the fetch.
+	 */
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext: managedObjectContext];
+	[request setEntity:entity];
+	
+	// Order the events by creation date, most recent first.
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
+	NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+	[request setSortDescriptors:sortDescriptors];
+	[sortDescriptor release];
+	[sortDescriptors release];
+	
+	// Execute the fetch -- create a mutable copy of the result.
+	NSError *error = nil;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	if (mutableFetchResults == nil) {
+		// Handle the error.
+	}
+	
+	// Set self's events array to the mutable array, then clean up.
+	[self setEventsArray:mutableFetchResults];
+	[mutableFetchResults release];
+	[request release];
+	
+	//[eventsArray getObjects:<#(id *)objects#> range:<#(NSRange)range#>
+	
+	
 	[self sendEmailTo:[emailField text]
 		  withSubject:[addressField text]
 			 withBody:[destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]];

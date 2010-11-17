@@ -20,7 +20,7 @@
 	
 	// location related items
 	NSMutableArray *eventsArray;
-	//NSManagedObjectContext *managedObjectContext;	    
+	NSManagedObjectContext *managedObjectContext;	    
     CLLocationManager *locationManager;
 	
 }
