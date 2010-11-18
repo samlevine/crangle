@@ -51,7 +51,7 @@
 	
 	[[self locationManager] startUpdatingLocation];
 	
-	[self addEvent];
+	//[self addEvent];
 
 	 
 	 
@@ -123,10 +123,25 @@
 	
 	//[eventsArray getObjects:<#(id *)objects#> range:<#(NSRange)range#>
 	
+	static NSNumberFormatter *numberFormatter = nil;
+	if (numberFormatter == nil) {
+		numberFormatter = [[NSNumberFormatter alloc] init];
+		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		[numberFormatter setMaximumFractionDigits:3];
+	}
 	
+	Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
+	NSString *body = [NSString stringWithFormat:@"transportation: %@\nlat: %@\nlon: %@\nkph: %@",
+					  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]],
+					  [numberFormatter stringFromNumber:[event latitude]],
+					  [numberFormatter stringFromNumber:[event longitude]],
+					  [numberFormatter stringFromNumber:[event kph]]];
+					 
+					  
+					  
 	[self sendEmailTo:[emailField text]
 		  withSubject:[addressField text]
-			 withBody:[destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]];
+			 withBody:body];
 	
 }
 
@@ -174,7 +189,7 @@
 	[event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
 	[event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
 	[event setKph:[NSNumber numberWithDouble:speed]];
-	NSLog( @"%@", [location description]);
+	//NSLog( @"%@", [location description]);
 	// Should be the location's timestamp, but this will be constant for simulator.
 	// [event setCreationDate:[location timestamp]];
 	[event setCreationDate:[NSDate date]];
