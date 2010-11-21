@@ -21,6 +21,7 @@
 		E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */; };
 		E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA56128BA4E90098394E /* CoreData.framework */; };
 		E57CCA5F128BA7B60098394E /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA5E128BA7B60098394E /* Event.m */; };
+		E57CCD6B1294EF030098394E /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCD6A1294EF030098394E /* YAJL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		E57CCA56128BA4E90098394E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E57CCA5D128BA7B60098394E /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		E57CCA5E128BA7B60098394E /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		E57CCD6A1294EF030098394E /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJL.framework; path = /Library/Frameworks/YAJL.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				E57CCA39128BA25B0098394E /* CoreLocation.framework in Frameworks */,
 				E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */,
+				E57CCD6B1294EF030098394E /* YAJL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +123,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E57CCD6A1294EF030098394E /* YAJL.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -208,11 +212,16 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Crangle_Prefix.pch;
 				INFOPLIST_FILE = "Crangle-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = Crangle;
 			};
 			name = Debug;
@@ -222,6 +231,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = /Library/Frameworks/;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Crangle_Prefix.pch;
 				INFOPLIST_FILE = "Crangle-Info.plist";

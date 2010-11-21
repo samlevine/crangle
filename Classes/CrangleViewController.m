@@ -76,6 +76,45 @@
 	return locationManager;
 }
 
+
+
+- (NSString *)longestDuration: (id)array {
+	id object;
+	NSString *currentLongestDuration;
+	BOOL compare = NO;
+	//NSLog(@"object");
+	if ([array respondsToSelector: @selector(objectEnumerator)]) {
+		//NSLog(@"^array");
+		
+		@try {
+			if ([array objectForKey:@"duration"]) {
+				//NSLog(@"%@", [array objectForKey:@"duration"]);
+				NSLog(@"%@", [[array objectForKey:@"duration"] objectForKey:@"text"]);
+			}
+			
+		}
+		@catch (NSException * e) {
+			//do nothing
+		}
+		//if ([array respondsToSelector: @selector(valueForKey:)]) {
+			//if ([array valueForKey:@"distance"]) {
+			//	compare = YES;
+			//}
+		//}
+		NSEnumerator *e = [array objectEnumerator];
+		while (object = [e nextObject]) {
+			NSString *nextLongestDuration =	[self longestDuration:object];
+			if (compare) {
+			//compare the strings
+			}
+		} 
+	} else {
+		//NSLog(@"%@", array);
+	}
+	return currentLongestDuration;
+}
+
+
 - (void)sendButtonClicked: (id)sender {
 
 	//NSLog(@"address: %@, e-mail: %@, transportation: %@", 
@@ -93,6 +132,45 @@
 	
 	[self addEvent];
 	
+	NSData *directionData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true"]];
+	//NSString *JSONString = @"[1, 2, 3]";
+	NSArray *arrayFromString = [directionData yajl_JSON];
+	
+	[self longestDuration:arrayFromString];
+	/*for (NSDictionary *item in arrayFromString) {
+		
+		@try {
+			NSLog(@"%@", [item objectForKey:@"distance"]);
+		}
+		@catch (NSException * e) {
+			//do nothing
+		}
+		
+	
+		
+	}*/
+	
+	
+	
+	/*
+	NSEnumerator *topE = [arrayFromString objectEnumerator];
+	id topObject;
+	id midObject;
+	while (topObject = [topE nextObject]) {
+	//	NSLog(@"%@", topObject);
+		NSLog(@"1");
+		if ([topObject respondsToSelector: @selector(objectEnumerator)]) {
+			
+			NSEnumerator *midE = [topObject objectEnumerator];
+			while (midObject = [midE nextObject]) {
+				//NSLog(@"%@", midObject);
+				NSLog(@"2");
+	//		
+			}
+		}
+		
+	}
+	*/
 	
 	/*
 	 Fetch existing events.

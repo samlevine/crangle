@@ -24,6 +24,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <YAJL/YAJL.h>
 #import "CrangleAppDelegate.h"
 
 
