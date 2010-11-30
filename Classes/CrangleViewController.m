@@ -79,39 +79,101 @@
 
 
 - (NSString *)longestDuration: (id)array {
-	id object;
-	NSString *currentLongestDuration;
-	BOOL compare = NO;
-	//NSLog(@"object");
-	if ([array respondsToSelector: @selector(objectEnumerator)]) {
-		//NSLog(@"^array");
-		
+	//id object;
+	//id innerObject;
+	//id moreInnerObject;
+	//NSString *currentLongestDuration;
+	NSString *returnLongestDuration;
+	//NSString *thisLongestDuration;
+	//NSMutableString *resultLongestDurationString = [NSMutableString stringWithString:@""];
+	//NSMutableString *longestDurationString = [NSMutableString stringWithString:@""];
+	//BOOL compare = NO;
+	
+	// this is a horrible hack
+	returnLongestDuration = [[[[[[array valueForKey: @"routes"] objectAtIndex:0] objectForKey: @"legs"] objectAtIndex:0] objectForKey: @"duration"] objectForKey: @"text"];
+	
+							 /*
+							 
+	call (id)[array valueForKey: @"routes"]
+	call (id)[$1 objectAtIndex:0]
+	call (id)[$2 objectForKey: @"legs"]
+	call (id)[$3 objectAtIndex:0]
+	call (id)[$4 objectForKey: @"duration"]
+	call (id)[$5 objectForKey: @"text"]
+	*/
+	/*
+	if ([array respondsToSelector: @selector(objectEnumerator)]
+		&& [array respondsToSelector: @selector(objectForKey:)]) {
 		@try {
 			if ([array objectForKey:@"duration"]) {
 				//NSLog(@"%@", [array objectForKey:@"duration"]);
 				NSLog(@"%@", [[array objectForKey:@"duration"] objectForKey:@"text"]);
+				thisLongestDuration = [[array objectForKey:@"duration"] objectForKey:@"text"];
+				//longestDurationString = [NSMutableString stringWithString:currentLongestDuration];
+				compare = YES;
 			}
 			
 		}
 		@catch (NSException * e) {
 			//do nothing
 		}
-		//if ([array respondsToSelector: @selector(valueForKey:)]) {
-			//if ([array valueForKey:@"distance"]) {
-			//	compare = YES;
-			//}
-		//}
+	 
+	 */
+	/*
 		NSEnumerator *e = [array objectEnumerator];
 		while (object = [e nextObject]) {
-			NSString *nextLongestDuration =	[self longestDuration:object];
-			if (compare) {
-			//compare the strings
-			}
-		} 
-	} else {
-		//NSLog(@"%@", array);
-	}
-	return currentLongestDuration;
+			if ([object respondsToSelector: @selector(objectEnumerator)]) {
+				NSEnumerator *innerE = [object objectEnumerator];
+				while (innerObject = [innerE nextObject]) {
+					@try {
+						
+						if ([innerObject objectForKey:@"legs"]) {
+							NSEnumerator *moreInnerE = [innerObject objectEnumerator];
+							while (moreInnerObject  = [moreInnerE nextObject]) {
+								if ([moreInnerObject objectForKey:@"legs"]) {
+									//NSLog(@"%@", [array objectForKey:@"duration"]);
+									//NSLog(@"%@", [[object objectForKey:@"duration"] objectForKey:@"text"]);
+									returnLongestDuration = [[[innerObject objectForKey:@"legs"]
+															  objectForKey:@"duration"]
+															 objectForKey:@"text"];
+									//longestDurationString = [NSMutableString stringWithString:currentLongestDuration];
+									compare = YES;
+								}
+
+							}
+
+						}
+						
+					}
+					@catch (NSException * e) {
+						continue;
+					}
+				}
+
+			
+			
+			
+			//NSString *nextLongestDuration = [self longestDuration:object];
+			/*	
+			if (compare && thisLongestDuration) {
+				NSComparisonResult result = [thisLongestDuration compare:currentLongestDuration];
+				if (result == NSOrderedAscending) {
+					// currentLongestDuration is equal to nextLongestDuration;
+					compare = NO;
+				} else {
+					currentLongestDuration = thisLongestDuration;
+					compare = NO;
+				}
+
+			} */
+	/*
+		}
+		//resultLongestDurationString = [NSMutableString stringWithString:longestDurationString];
+	} 
+	*/
+	
+
+	return returnLongestDuration;
 }
 
 
@@ -136,7 +198,8 @@
 	//NSString *JSONString = @"[1, 2, 3]";
 	NSArray *arrayFromString = [directionData yajl_JSON];
 	
-	[self longestDuration:arrayFromString];
+	NSString *duration = [self longestDuration:arrayFromString];
+	//NSLog(@"%@", duration);
 	/*for (NSDictionary *item in arrayFromString) {
 		
 		@try {
