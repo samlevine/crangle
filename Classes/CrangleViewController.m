@@ -177,25 +177,16 @@
 }
 
 
-- (void)sendButtonClicked: (id)sender {
-
-	//NSLog(@"address: %@, e-mail: %@, transportation: %@", 
-	//	  [addressField text],
-	//	  [emailField text],
-	//	  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]]);
-	
-	
+- (void)sendButtonClicked: (id)sender {	
 	
 	// If it's not possible to get a location, then return.
+	// FIXME: let the end user know what happened
 	CLLocation *location = [locationManager location];
 	if (!location) {
 		return;
 	}
 	
 	[self addEvent];
-	
-
-
 	
 	/*
 	 Fetch existing events.
@@ -230,16 +221,13 @@
 	if (numberFormatter == nil) {
 		numberFormatter = [[NSNumberFormatter alloc] init];
 		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-		[numberFormatter setMaximumFractionDigits:3];
+		[numberFormatter setMaximumFractionDigits:1];
 	}
 	Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
-	
-	
 	
 	// origin=lat,lon 
 	NSString *destination = [addressField text];
 	NSString *travelMethod;
-	// mode=[destinationControl selectedSegmentIndex] (need to format as driving, walking or bicycling)
 	switch ([destinationControl selectedSegmentIndex]) {
 		case 1:
 			travelMethod = @"bicycling";
@@ -256,29 +244,28 @@
 						[numberFormatter stringFromNumber:[event latitude]],
 						[numberFormatter stringFromNumber:[event longitude]]];
 	
+	//url should be something like http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true
 	NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%@&destination=%@&mode=%@&sensor=true", origin, destination, travelMethod];
 	
 	NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
 	
-	//NSData *directionData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true"]];
-	//NSString *JSONString = @"[1, 2, 3]";
 	NSArray *arrayFromString = [directionData yajl_JSON];
-	
 	NSString *duration = [self longestDuration:arrayFromString];
-	
-	
-	
-	
+	NSString *formattedNumberString;
+	if ([numberFormatter stringFromNumber:[event kph]]) {
+		formattedNumberString = [numberFormatter stringFromNumber:[event kph]];
+	} else {
+		formattedNumberString = @"0";
+	}
+
 	
 	NSString *body = [NSString stringWithFormat:@"transportation: %@\nlat: %@\nlon: %@\nkph: %@\nETA: %@",
 					  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]],
 					  [numberFormatter stringFromNumber:[event latitude]],
 					  [numberFormatter stringFromNumber:[event longitude]],
-					  [numberFormatter stringFromNumber:[event kph]],
+					  formattedNumberString,
 					  duration];
 					 
-					  
-					  
 	[self sendEmailTo:[emailField text]
 		  withSubject:[addressField text]
 			 withBody:body];
@@ -328,7 +315,14 @@
 	CLLocationSpeed speed = [location speed];
 	[event setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
 	[event setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
-	[event setKph:[NSNumber numberWithDouble:speed]];
+	// need to test this in a moving vehicle of sorts
+	if (speed > 0) {
+		[event setKph:[NSNumber numberWithDouble:speed]];
+	} else {
+		[event setKph:0];
+	}
+
+	
 	//NSLog( @"%@", [location description]);
 	// Should be the location's timestamp, but this will be constant for simulator.
 	// [event setCreationDate:[location timestamp]];
