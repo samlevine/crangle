@@ -194,46 +194,8 @@
 	
 	[self addEvent];
 	
-	NSData *directionData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true"]];
-	//NSString *JSONString = @"[1, 2, 3]";
-	NSArray *arrayFromString = [directionData yajl_JSON];
-	
-	NSString *duration = [self longestDuration:arrayFromString];
-	//NSLog(@"%@", duration);
-	/*for (NSDictionary *item in arrayFromString) {
-		
-		@try {
-			NSLog(@"%@", [item objectForKey:@"distance"]);
-		}
-		@catch (NSException * e) {
-			//do nothing
-		}
-		
-	
-		
-	}*/
-	
-	
-	
-	/*
-	NSEnumerator *topE = [arrayFromString objectEnumerator];
-	id topObject;
-	id midObject;
-	while (topObject = [topE nextObject]) {
-	//	NSLog(@"%@", topObject);
-		NSLog(@"1");
-		if ([topObject respondsToSelector: @selector(objectEnumerator)]) {
-			
-			NSEnumerator *midE = [topObject objectEnumerator];
-			while (midObject = [midE nextObject]) {
-				//NSLog(@"%@", midObject);
-				NSLog(@"2");
-	//		
-			}
-		}
-		
-	}
-	*/
+
+
 	
 	/*
 	 Fetch existing events.
@@ -270,13 +232,50 @@
 		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[numberFormatter setMaximumFractionDigits:3];
 	}
-	
 	Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
-	NSString *body = [NSString stringWithFormat:@"transportation: %@\nlat: %@\nlon: %@\nkph: %@",
+	
+	
+	
+	// origin=lat,lon 
+	NSString *destination = [addressField text];
+	NSString *travelMethod;
+	// mode=[destinationControl selectedSegmentIndex] (need to format as driving, walking or bicycling)
+	switch ([destinationControl selectedSegmentIndex]) {
+		case 1:
+			travelMethod = @"bicycling";
+			break;
+		case 2:
+			travelMethod = @"walking";
+			break;
+		default:
+			travelMethod = @"driving";
+			break;
+	}
+	
+	NSString *origin = [NSString stringWithFormat:@"%@,%@",
+						[numberFormatter stringFromNumber:[event latitude]],
+						[numberFormatter stringFromNumber:[event longitude]]];
+	
+	NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%@&destination=%@&mode=%@&sensor=true", origin, destination, travelMethod];
+	
+	NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
+	
+	//NSData *directionData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true"]];
+	//NSString *JSONString = @"[1, 2, 3]";
+	NSArray *arrayFromString = [directionData yajl_JSON];
+	
+	NSString *duration = [self longestDuration:arrayFromString];
+	
+	
+	
+	
+	
+	NSString *body = [NSString stringWithFormat:@"transportation: %@\nlat: %@\nlon: %@\nkph: %@\nETA: %@",
 					  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]],
 					  [numberFormatter stringFromNumber:[event latitude]],
 					  [numberFormatter stringFromNumber:[event longitude]],
-					  [numberFormatter stringFromNumber:[event kph]]];
+					  [numberFormatter stringFromNumber:[event kph]],
+					  duration];
 					 
 					  
 					  
