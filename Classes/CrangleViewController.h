@@ -25,10 +25,14 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <YAJL/YAJL.h>
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 #import "CrangleAppDelegate.h"
 
 
-@interface CrangleViewController : UIViewController <CLLocationManagerDelegate> {
+@interface CrangleViewController : UIViewController < CLLocationManagerDelegate,
+													  ABPeoplePickerNavigationControllerDelegate>
+{
 	IBOutlet UISegmentedControl *destinationControl;
 	IBOutlet UIBarButtonItem *sendButton;
 	IBOutlet UITextField *addressField;
@@ -60,6 +64,9 @@
 
 // for core data model later
 - (void)addEvent;
+
+//people picker stuff
+-(IBAction)showPeoplePickerController;
 
 @end
 

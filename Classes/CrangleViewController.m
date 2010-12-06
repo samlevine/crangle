@@ -344,6 +344,82 @@
 	//[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
 }
 
+#pragma mark People picker methods
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+	return YES;
+}
+
+// Does not allow users to perform default actions such as dialing a phone number, when they select a person property.
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+								property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+	id theProperty = (id)ABRecordCopyValue(person, property);
+	int propertyType = ABPersonGetTypeOfProperty(property);
+	
+	if (propertyType == kABStringPropertyType) {
+		printf("%s\n", [theProperty UTF8String]);
+	} else if (propertyType == kABIntegerPropertyType) {
+		printf("%d\n", [theProperty integerValue]);
+	} else if (propertyType == kABRealPropertyType) {
+		printf("%f\n", [theProperty floatValue]);
+	} else if (propertyType == kABDateTimePropertyType) {
+		printf("%s\n", [[theProperty description] UTF8String]);
+	} else if (propertyType == kABMultiStringPropertyType) {
+		printf("%s\n",
+			   [[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
+				 objectAtIndex:identifier] UTF8String]);
+	} else if (propertyType == kABMultiIntegerPropertyType) {
+		printf("%d\n",
+			   [[(NSArray *)
+				 ABMultiValueCopyArrayOfAllValues(theProperty)
+				 objectAtIndex:identifier] integerValue]);
+	} else if (propertyType == kABMultiRealPropertyType) {
+		printf("%f\n",
+			   [[(NSArray *)
+				 ABMultiValueCopyArrayOfAllValues(theProperty)
+				 objectAtIndex:identifier] floatValue]);
+	} else if (propertyType == kABMultiDateTimePropertyType) {
+		printf("%s\n",
+			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
+				  objectAtIndex:identifier] description] UTF8String]);
+	} else if (propertyType == kABMultiDictionaryPropertyType) {
+		printf("%s\n",
+			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
+				 objectAtIndex:identifier] description] UTF8String]);
+	}
+	[self dismissModalViewControllerAnimated:YES];
+	CFRelease(theProperty);
+	return NO;
+}
+
+// Dismisses the people picker and shows the application when users tap Cancel. 
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker;
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+// Called when users tap "Display Picker" in the application. Displays a list of contacts and allows users to select a contact from that list.
+// The application only shows the phone, email, and birthdate information of the selected contact.
+-(void)showPeoplePickerController
+{
+	ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+	// Display only a person's phone, email, and birthdate
+	NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
+							   [NSNumber numberWithInt:kABPersonEmailProperty],
+							   [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+	
+	
+	picker.displayedProperties = displayedItems;
+	// Show the picker 
+	[self presentModalViewController:picker animated:YES];
+    [picker release];	
+}
+
+#pragma mark cleanup
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
