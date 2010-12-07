@@ -95,7 +95,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				E57CC9B0128A556D0098394E /* PlusIcon.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -121,6 +120,7 @@
 			children = (
 				E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */,
 				E57CC935128901670098394E /* plusicon.jpg */,
+				E57CC9B0128A556D0098394E /* PlusIcon.png */,
 				2899E5210DE3E06400AC0155 /* CrangleViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Crangle-Info.plist */,

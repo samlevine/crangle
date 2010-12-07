@@ -41,10 +41,11 @@
 	// FIXME
 	UIButton *_contactsButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateNormal];
-	[_contactsButton setImage:[UIImage imageNamed:@"Plusicon.png"] forState:UIControlStateSelected];
+	//[_contactsButton setImage:[UIImage imageNamed:@"Plusicon.png"] forState:UIControlStateSelected];
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateHighlighted];
-	//_contactsButton.imageEdgeInsets = UIEdgeInsetsMake(0, -16, 0, 0);
-	//[_contactsButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+	_contactsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+	_contactsButton.bounds = CGRectMake(0, 0, 24, 24);
+	[_contactsButton addTarget:self action:@selector(showPeoplePickerController) forControlEvents:UIControlEventTouchUpInside];
 	emailField.rightView = _contactsButton;
 	emailField.rightViewMode = UITextFieldViewModeAlways;
 	// ENDFIXME
@@ -359,38 +360,47 @@
 	int propertyType = ABPersonGetTypeOfProperty(property);
 	
 	if (propertyType == kABStringPropertyType) {
-		printf("%s\n", [theProperty UTF8String]);
+		printf("kABStringPropertyType %s\n", [theProperty UTF8String]);
 	} else if (propertyType == kABIntegerPropertyType) {
-		printf("%d\n", [theProperty integerValue]);
+		printf("kABIntegerPropertyType %d\n", [theProperty integerValue]);
 	} else if (propertyType == kABRealPropertyType) {
-		printf("%f\n", [theProperty floatValue]);
+		printf("kABRealPropertyType %f\n", [theProperty floatValue]);
 	} else if (propertyType == kABDateTimePropertyType) {
-		printf("%s\n", [[theProperty description] UTF8String]);
+		printf("kABDateTimePropertyType %s\n", [[theProperty description] UTF8String]);
 	} else if (propertyType == kABMultiStringPropertyType) {
-		printf("%s\n",
+		printf("kABMultiStringPropertyType %s\n",
 			   [[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
 				 objectAtIndex:identifier] UTF8String]);
+		emailField.text = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
+		
+		[self dismissModalViewControllerAnimated:YES];
+		CFRelease(theProperty);
+		return NO;
 	} else if (propertyType == kABMultiIntegerPropertyType) {
-		printf("%d\n",
+		printf("kABMultiIntegerPropertyType %d\n",
 			   [[(NSArray *)
 				 ABMultiValueCopyArrayOfAllValues(theProperty)
 				 objectAtIndex:identifier] integerValue]);
 	} else if (propertyType == kABMultiRealPropertyType) {
-		printf("%f\n",
+		printf("kABMultiRealPropertyType %f\n",
 			   [[(NSArray *)
 				 ABMultiValueCopyArrayOfAllValues(theProperty)
 				 objectAtIndex:identifier] floatValue]);
 	} else if (propertyType == kABMultiDateTimePropertyType) {
-		printf("%s\n",
+		printf("kABMultiDateTimePropertyType %s\n",
 			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
 				  objectAtIndex:identifier] description] UTF8String]);
 	} else if (propertyType == kABMultiDictionaryPropertyType) {
-		printf("%s\n",
+		printf("kABMultiDictionaryPropertyType %s\n",
 			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
 				 objectAtIndex:identifier] description] UTF8String]);
 	}
-	[self dismissModalViewControllerAnimated:YES];
-	CFRelease(theProperty);
+	
+	
+	//emailField.text = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
+	
+	//[self dismissModalViewControllerAnimated:YES];
+	//CFRelease(theProperty);
 	return NO;
 }
 
@@ -406,10 +416,8 @@
 {
 	ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
-	// Display only a person's phone, email, and birthdate
-	NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
-							   [NSNumber numberWithInt:kABPersonEmailProperty],
-							   [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+	// Display only a person's email
+	NSArray *displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonEmailProperty], nil];
 	
 	
 	picker.displayedProperties = displayedItems;
