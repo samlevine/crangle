@@ -28,6 +28,7 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 #import "CrangleAppDelegate.h"
+#import "JSON.h"
 
 
 @interface CrangleViewController : UIViewController < CLLocationManagerDelegate,

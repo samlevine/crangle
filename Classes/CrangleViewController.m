@@ -38,8 +38,9 @@
 	
 	
 	
-	// FIXME
+	
 	UIButton *_contactsButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	// FIXME: This image is pretty mediocre. It also should be 24 pixels
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateNormal];
 	//[_contactsButton setImage:[UIImage imageNamed:@"Plusicon.png"] forState:UIControlStateSelected];
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateHighlighted];
@@ -48,7 +49,7 @@
 	[_contactsButton addTarget:self action:@selector(showPeoplePickerController) forControlEvents:UIControlEventTouchUpInside];
 	emailField.rightView = _contactsButton;
 	emailField.rightViewMode = UITextFieldViewModeAlways;
-	// ENDFIXME
+	
 	
 	[[self locationManager] startUpdatingLocation];
 	
@@ -228,6 +229,7 @@
 	
 	// origin=lat,lon 
 	NSString *destination = [addressField text];
+	destination = [destination stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
 	NSString *travelMethod;
 	switch ([destinationControl selectedSegmentIndex]) {
 		case 1:
@@ -248,10 +250,29 @@
 	//url should be something like http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true
 	NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%@&destination=%@&mode=%@&sensor=true", origin, destination, travelMethod];
 	
-	NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
+	//NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
 	
-	NSArray *arrayFromString = [directionData yajl_JSON];
-	NSString *duration = [self longestDuration:arrayFromString];
+	NSString *directionString = [NSString stringWithContentsOfURL: [NSURL URLWithString:url] encoding:NSASCIIStringEncoding error:&error];
+	
+	NSDictionary *directionResults = [directionString JSONValue];
+	NSArray *durationResults = [directionResults objectForKey:@"routes"];
+	NSInteger seconds = 0;
+
+	for (NSDictionary *result in durationResults) {
+		NSArray *legsArray = [result objectForKey:@"legs"];
+		for (NSDictionary *legsResult in legsArray) {
+			NSArray *stepsArray = [legsResult objectForKey:@"steps"];
+			for (NSDictionary *stepsResult in stepsArray) {
+				NSNumber *item = [[stepsResult objectForKey:@"duration"] objectForKey:@"value"];
+				seconds += [item intValue];
+			}
+		}
+	}
+	
+	
+	//NSArray *arrayFromString = [directionData yajl_JSON];
+	//NSString *duration = [self longestDuration:arrayFromString];
+	NSString *duration = [NSString stringWithFormat:@"%d", seconds / 60];
 	NSString *formattedNumberString;
 	if ([numberFormatter stringFromNumber:[event kph]]) {
 		formattedNumberString = [numberFormatter stringFromNumber:[event kph]];
