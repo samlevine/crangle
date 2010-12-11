@@ -182,15 +182,15 @@
 	}
 
 	
-	NSString *body = [NSString stringWithFormat:@"transportation: %@\nlat: %@\nlon: %@\nkph: %@\nETA: %@",
-					  [destinationControl titleForSegmentAtIndex:[destinationControl selectedSegmentIndex]],
+	NSString *body = [NSString stringWithFormat:@"I am %@ from %@,%@ at %@ kph.\n My ETA is %@ minutes.",
+					  travelMethod,
 					  [numberFormatter stringFromNumber:[event latitude]],
 					  [numberFormatter stringFromNumber:[event longitude]],
 					  formattedNumberString,
 					  duration];
 					 
 	[self sendEmailTo:[emailField text]
-		  withSubject:[addressField text]
+		  withSubject:[NSString stringWithFormat:@"I'll be there in %@ minutes", duration]
 			 withBody:body];
 	
 }
