@@ -28,10 +28,13 @@
 #import <AddressBookUI/AddressBookUI.h>
 #import "CrangleAppDelegate.h"
 #import "JSON.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 
 @interface CrangleViewController : UIViewController < CLLocationManagerDelegate,
-													  ABPeoplePickerNavigationControllerDelegate>
+													  ABPeoplePickerNavigationControllerDelegate,
+													  MFMailComposeViewControllerDelegate>
 {
 	IBOutlet UISegmentedControl *destinationControl;
 	IBOutlet UIBarButtonItem *sendButton;
@@ -59,7 +62,7 @@
 
 
 -(IBAction) sendButtonClicked: (id) sender;
-- (void) sendEmailTo:(NSString *)to withSubject:(NSString *) subject withBody:(NSString *)body;
+- (void) sendEmailTo:(NSArray *)to withSubject:(NSString *) subject withBody:(NSString *)body;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 // for core data model later

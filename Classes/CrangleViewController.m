@@ -182,30 +182,58 @@
 	}
 
 	
-	NSString *body = [NSString stringWithFormat:@"I am %@ from %@,%@ at %@ kph.\n My ETA is %@ minutes.",
+	NSString *body = [NSString stringWithFormat:@"I am %@ from <a href=\"http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=%@,%@\">here</a> at %@ kph.\n My ETA is %@ minutes.",
 					  travelMethod,
 					  [numberFormatter stringFromNumber:[event latitude]],
 					  [numberFormatter stringFromNumber:[event longitude]],
 					  formattedNumberString,
 					  duration];
 					 
-	[self sendEmailTo:[emailField text]
+	[self sendEmailTo:[NSArray arrayWithObject:[emailField text]]
 		  withSubject:[NSString stringWithFormat:@"I'll be there in %@ minutes", duration]
 			 withBody:body];
 	
 }
 
-// sendEmailTo method thanks to Brandon Trebitowski
-// http://icodeblog.com/2009/02/20/iphone-programming-tutorial-using-openurl-to-send-email-from-your-app/
+/* sendEmailTo method thanks to: 
+Brandon Trebitowski: http://icodeblog.com/2009/02/20/iphone-programming-tutorial-using-openurl-to-send-email-from-your-app/
+Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in-app-email-messageui/
+*/
 
-- (void) sendEmailTo:(NSString *)to withSubject:(NSString *) subject withBody:(NSString *)body {
-	NSString *mailString = [NSString stringWithFormat:@"mailto:?to=%@&subject=%@&body=%@",
-							[to stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
-							[subject stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding],
-							[body  stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+- (void) sendEmailTo:(NSArray *)to withSubject:(NSString *) subject withBody:(NSString *)body {
 	
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mailString]];
+	if ([MFMailComposeViewController canSendMail]) {
+		
+		MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+		mailViewController.mailComposeDelegate = self;
+		[mailViewController setToRecipients:to];
+		[mailViewController setSubject:subject];
+		[mailViewController setMessageBody:body isHTML:YES];
+		
+		[self presentModalViewController:mailViewController animated:YES];
+		[mailViewController release];
+		
+	}
+	
+	else {
+		
+		//FIXME: add alert to end user that they cannot send e-mail
+		
+	}
+
 }
+	
+
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	
+	[self dismissModalViewControllerAnimated:YES];
+	
+}
+	
+	
+	
+	
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	if ([textField isEqual:addressField])

@@ -26,6 +26,7 @@
 		E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */; };
 		E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA56128BA4E90098394E /* CoreData.framework */; };
 		E57CCA5F128BA7B60098394E /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA5E128BA7B60098394E /* Event.m */; };
+		E5B04D1412B34AB00089FC0B /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B04D1312B34AB00089FC0B /* MessageUI.framework */; };
 		E5D4D1AC12A8A3EB003DAC28 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D4D1AB12A8A3EB003DAC28 /* AddressBook.framework */; };
 		E5D4D1AE12A8A3EB003DAC28 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D4D1AD12A8A3EB003DAC28 /* AddressBookUI.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		E57CCA56128BA4E90098394E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E57CCA5D128BA7B60098394E /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		E57CCA5E128BA7B60098394E /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		E5B04D1312B34AB00089FC0B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E5D4D1AB12A8A3EB003DAC28 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E5D4D1AD12A8A3EB003DAC28 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				E57CCA57128BA4E90098394E /* CoreData.framework in Frameworks */,
 				E5D4D1AC12A8A3EB003DAC28 /* AddressBook.framework in Frameworks */,
 				E5D4D1AE12A8A3EB003DAC28 /* AddressBookUI.framework in Frameworks */,
+				E5B04D1412B34AB00089FC0B /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +165,7 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				E57CCA38128BA25B0098394E /* CoreLocation.framework */,
 				E57CCA56128BA4E90098394E /* CoreData.framework */,
+				E5B04D1312B34AB00089FC0B /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
