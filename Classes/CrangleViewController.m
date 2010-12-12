@@ -28,8 +28,8 @@
 
 @implementation CrangleViewController
 
-@synthesize destinationControl, sendButton, addressField, emailField, contactsButton, eventsArray, 
-			managedObjectContext, locationManager;
+@synthesize destinationControl, sendButton, addressField, emailField, centerMapView, contactsButton, eventsArray, 
+			managedObjectContext, locationManager, currentCity, mapInitialized;
 
 - (void)viewDidLoad {
 	
@@ -37,7 +37,7 @@
 	
 	
 	
-	
+	[[self locationManager] startUpdatingLocation];
 	
 	UIButton *_contactsButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	// FIXME: This image is pretty mediocre. It also should be 24 pixels
@@ -50,12 +50,11 @@
 	emailField.rightView = _contactsButton;
 	emailField.rightViewMode = UITextFieldViewModeAlways;
 	
-	
-	[[self locationManager] startUpdatingLocation];
-	
-	//[self addEvent];
+	//CLLocation *location = [locationManager location];
+	//CLLocationCoordinate2D coordinate = [location coordinate];
 
-	 
+	//[NSNumber numberWithDouble:coordinate.latitude];
+	//[NSNumber numberWithDouble:coordinate.longitude];
 	 
 	 
 	
@@ -127,7 +126,7 @@
 	if (numberFormatter == nil) {
 		numberFormatter = [[NSNumberFormatter alloc] init];
 		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-		[numberFormatter setMaximumFractionDigits:1];
+		//[numberFormatter setMaximumFractionDigits:13];
 	}
 	Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
 	
@@ -182,7 +181,7 @@
 	}
 
 	
-	NSString *body = [NSString stringWithFormat:@"I am %@ from <a href=\"http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=%@,%@\">here</a> at %@ kph.\n My ETA is %@ minutes.",
+	NSString *body = [NSString stringWithFormat:@"I am %@ near <a href=\"http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=%@,%@\">here</a> at %@ kph.\n My ETA is %@ minutes.",
 					  travelMethod,
 					  [numberFormatter stringFromNumber:[event latitude]],
 					  [numberFormatter stringFromNumber:[event longitude]],
@@ -190,7 +189,7 @@
 					  duration];
 					 
 	[self sendEmailTo:[NSArray arrayWithObject:[emailField text]]
-		  withSubject:[NSString stringWithFormat:@"I'll be there in %@ minutes", duration]
+		  withSubject:[NSString stringWithFormat:@"I'll be there in about %@ minutes", duration]
 			 withBody:body];
 	
 }
@@ -208,6 +207,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		mailViewController.mailComposeDelegate = self;
 		[mailViewController setToRecipients:to];
 		[mailViewController setSubject:subject];
+		// we are sending HTML e-mail becaus
 		[mailViewController setMessageBody:body isHTML:YES];
 		
 		[self presentModalViewController:mailViewController animated:YES];
@@ -246,6 +246,49 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		[textField resignFirstResponder];
 	}
 	return NO;
+}
+
+
+// this delegate is called when the app successfully finds your current location
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation 
+{
+    // this creates a MKReverseGeocoder to find a placemark using the found coordinates
+    MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
+    geoCoder.delegate = self;
+    [geoCoder start];
+}
+
+// this delegate is called when the reverseGeocoder finds a placemark
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
+{
+	MKPlacemark *myPlacemark = placemark;
+    // with the placemark you can now retrieve the city name
+    currentCity = [myPlacemark.addressDictionary objectForKey:(NSString*) kABPersonAddressCityKey];
+	
+	
+	if (!mapInitialized) {
+		CLLocation *location = [locationManager location];
+		CLLocationCoordinate2D coordinate = [location coordinate];
+		MKCoordinateRegion region;
+		MKCoordinateSpan span;
+		span.latitudeDelta = 0.5;
+		span.longitudeDelta = 0.5;
+		region.center = coordinate;
+		[centerMapView setRegion:region animated:TRUE];
+		[centerMapView regionThatFits:region];
+		centerMapView.showsUserLocation = YES;
+		mapInitialized = YES;
+	}
+
+	
+	
+	//[centerMapView setCenterCoordinate:coordinate animated:YES];
+}
+
+// this delegate is called when the reversegeocoder fails to find a placemark
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
+{
+    NSLog(@"reverseGeocoder:%@ didFailWithError:%@", geocoder, error);
 }
 
 - (void)addEvent {

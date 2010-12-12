@@ -30,35 +30,43 @@
 #import "JSON.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <MapKit/MKReverseGeocoder.h>
+#import <MapKit/MapKit.h>
 
 
 @interface CrangleViewController : UIViewController < CLLocationManagerDelegate,
 													  ABPeoplePickerNavigationControllerDelegate,
-													  MFMailComposeViewControllerDelegate>
+													  MFMailComposeViewControllerDelegate,
+													  MKReverseGeocoderDelegate>
 {
 	IBOutlet UISegmentedControl *destinationControl;
 	IBOutlet UIBarButtonItem *sendButton;
 	IBOutlet UITextField *addressField;
 	IBOutlet UITextField *emailField;
+	IBOutlet MKMapView *centerMapView;
 	UIButton *contactsButton;
 	
 	// location related items
 	NSMutableArray *eventsArray;
 	NSManagedObjectContext *managedObjectContext;	    
     CLLocationManager *locationManager;
-	
+	NSString *currentCity;
+	BOOL mapInitialized;
 }
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *destinationControl;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *sendButton;
 @property (nonatomic, retain) IBOutlet UITextField *addressField;
 @property (nonatomic, retain) IBOutlet UITextField *emailField;
+@property (nonatomic, retain) IBOutlet MKMapView *centerMapView;
 @property (nonatomic, retain) UIButton *contactsButton;
 
 // for using core data later
 @property (nonatomic, retain) NSMutableArray *eventsArray;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, retain) NSString *currentCity;
+@property (nonatomic) BOOL mapInitialized;
 
 
 -(IBAction) sendButtonClicked: (id) sender;
