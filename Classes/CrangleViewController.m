@@ -131,7 +131,33 @@
 	Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
 	
 	// origin=lat,lon 
-	NSString *destination = [addressField text];
+	NSString *addressFieldText = [[addressField text] lowercaseString];
+	NSString *destination;
+	if ([addressFieldText hasSuffix:@"st"] ||
+		[addressFieldText hasSuffix:@"street"] ||
+		[addressFieldText hasSuffix:@"ave"] || 
+		[addressFieldText hasSuffix:@"avenue"] ||
+		[addressFieldText hasSuffix:@"lp"] ||
+		[addressFieldText hasSuffix:@"loop"] ||
+		[addressFieldText hasSuffix:@"blvd"] ||
+		[addressFieldText hasSuffix:@"boulevard"] || 
+		[addressFieldText hasSuffix:@"street"] ||
+		[addressFieldText hasSuffix:@"dr"] ||
+		[addressFieldText hasSuffix:@"drive"] ||
+		[addressFieldText hasSuffix:@"ln"] || 
+		[addressFieldText hasSuffix:@"lane"] ||
+		[addressFieldText hasSuffix:@"rd"] ||
+		[addressFieldText hasSuffix:@"road"] ||
+		[addressFieldText hasSuffix:@"pl"] || 
+		[addressFieldText hasSuffix:@"place"] ||
+		[addressFieldText hasSuffix:@"way"]
+		) 
+	{
+		destination = [NSString stringWithFormat:@"%@ %@", addressFieldText, currentCity];
+	} else {
+		destination = [addressField text];
+	}
+	
 	destination = [destination stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
 	NSString *travelMethod;
 	switch ([destinationControl selectedSegmentIndex]) {
