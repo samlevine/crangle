@@ -128,7 +128,8 @@
 		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		//[numberFormatter setMaximumFractionDigits:13];
 	}
-	Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
+	//Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
+	Event *event = (Event *)[eventsArray objectAtIndex:0];
 	
 	// origin=lat,lon 
 	NSString *addressFieldText = [[addressField text] lowercaseString];
