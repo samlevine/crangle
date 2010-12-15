@@ -33,13 +33,17 @@
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSManagedObjectModel *managedObjectModel;
     NSManagedObjectContext *managedObjectContext;
+	//UIView *loadingView;
+	//UIActivityIndicatorView *loadingAnimationIndicator;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet CrangleViewController *viewController;
-
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+//@property (nonatomic, retain) IBOutlet UIView *loadingView;
+//@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loadingAnimationIndicator;
+
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, readonly) NSString *applicationDocumentsDirectory;
 

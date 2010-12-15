@@ -15,6 +15,13 @@
 		2899E5220DE3E06400AC0155 /* CrangleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* CrangleViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* CrangleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* CrangleViewController.m */; };
+		E51DDADE12B5CF34002482C2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDAD812B5CF34002482C2 /* Icon-72.png */; };
+		E51DDADF12B5CF34002482C2 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDAD912B5CF34002482C2 /* Icon-Small-50.png */; };
+		E51DDAE012B5CF34002482C2 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDADA12B5CF34002482C2 /* Icon-Small.png */; };
+		E51DDAE112B5CF34002482C2 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDADB12B5CF34002482C2 /* Icon-Small@2x.png */; };
+		E51DDAE212B5CF34002482C2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDADC12B5CF34002482C2 /* Icon.png */; };
+		E51DDAE312B5CF34002482C2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDADD12B5CF34002482C2 /* Icon@2x.png */; };
+		E51DDB0212B725B1002482C2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E51DDB0112B725B1002482C2 /* Default.png */; };
 		E5520F9D12B07E5700A756C8 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9312B07E5700A756C8 /* NSObject+SBJSON.m */; };
 		E5520F9E12B07E5700A756C8 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9512B07E5700A756C8 /* NSString+SBJSON.m */; };
 		E5520F9F12B07E5700A756C8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9712B07E5700A756C8 /* SBJsonParser.m */; };
@@ -46,6 +53,13 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Crangle_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crangle_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Crangle-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Crangle-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		E51DDAD812B5CF34002482C2 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "images/Icon-72.png"; sourceTree = "<group>"; };
+		E51DDAD912B5CF34002482C2 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "images/Icon-Small-50.png"; sourceTree = "<group>"; };
+		E51DDADA12B5CF34002482C2 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "images/Icon-Small.png"; sourceTree = "<group>"; };
+		E51DDADB12B5CF34002482C2 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "images/Icon-Small@2x.png"; sourceTree = "<group>"; };
+		E51DDADC12B5CF34002482C2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = images/Icon.png; sourceTree = "<group>"; };
+		E51DDADD12B5CF34002482C2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "images/Icon@2x.png"; sourceTree = "<group>"; };
+		E51DDB0112B725B1002482C2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E5520F9112B07E5700A756C8 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		E5520F9212B07E5700A756C8 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		E5520F9312B07E5700A756C8 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -127,6 +141,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				E51DDB0112B725B1002482C2 /* Default.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -150,6 +165,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E51DDAD812B5CF34002482C2 /* Icon-72.png */,
+				E51DDAD912B5CF34002482C2 /* Icon-Small-50.png */,
+				E51DDADA12B5CF34002482C2 /* Icon-Small.png */,
+				E51DDADB12B5CF34002482C2 /* Icon-Small@2x.png */,
+				E51DDADC12B5CF34002482C2 /* Icon.png */,
+				E51DDADD12B5CF34002482C2 /* Icon@2x.png */,
 				E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */,
 				E57CC935128901670098394E /* plusicon.jpg */,
 				E57CC9B0128A556D0098394E /* PlusIcon.png */,
@@ -227,6 +248,13 @@
 				2899E5220DE3E06400AC0155 /* CrangleViewController.xib in Resources */,
 				E57CC936128901670098394E /* plusicon.jpg in Resources */,
 				E57CC9B1128A556D0098394E /* PlusIcon.png in Resources */,
+				E51DDADE12B5CF34002482C2 /* Icon-72.png in Resources */,
+				E51DDADF12B5CF34002482C2 /* Icon-Small-50.png in Resources */,
+				E51DDAE012B5CF34002482C2 /* Icon-Small.png in Resources */,
+				E51DDAE112B5CF34002482C2 /* Icon-Small@2x.png in Resources */,
+				E51DDAE212B5CF34002482C2 /* Icon.png in Resources */,
+				E51DDAE312B5CF34002482C2 /* Icon@2x.png in Resources */,
+				E51DDB0212B725B1002482C2 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

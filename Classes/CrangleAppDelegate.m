@@ -29,18 +29,35 @@
 
 @synthesize window;
 @synthesize viewController;
+//@synthesize loadingView;
+//@synthesize loadingAnimationIndicator;
 
 
 #pragma mark -
 #pragma mark Application lifecycle
 
+/*- (void)showLoading {
+	[loadingAnimationIndicator startAnimating];
+	loadingView.hidden = NO;
+} 
+- (void)hideLoading {
+	loadingView.hidden = YES;
+	[loadingAnimationIndicator stopAnimating];
+}*/
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
+	//[self showLoading];
+	//[window addSubview:loadingView];
+	
 
     // Add the view controller's view to the window and display.
-    [window addSubview:viewController.view];
-    [window makeKeyAndVisible];
+	[window addSubview:viewController.view];
+	[window makeKeyAndVisible];
+	
+
 	
 	NSManagedObjectContext *context = [self managedObjectContext];
 	if (!context) {
