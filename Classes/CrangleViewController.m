@@ -296,11 +296,12 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	if (!mapInitialized) {
 		CLLocation *location = [locationManager location];
 		CLLocationCoordinate2D coordinate = [location coordinate];
-		MKCoordinateRegion region;
+		//MKCoordinateRegion region;
 		MKCoordinateSpan span;
-		span.latitudeDelta = 0.5;
-		span.longitudeDelta = 0.5;
-		region.center = coordinate;
+		span.latitudeDelta = .02;
+		span.longitudeDelta = .02;
+		MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
+		//region.center = coordinate;
 		[centerMapView setRegion:region animated:TRUE];
 		[centerMapView regionThatFits:region];
 		centerMapView.showsUserLocation = YES;
