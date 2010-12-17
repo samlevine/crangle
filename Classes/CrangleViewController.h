@@ -37,7 +37,8 @@
 @interface CrangleViewController : UIViewController < CLLocationManagerDelegate,
 													  ABPeoplePickerNavigationControllerDelegate,
 													  MFMailComposeViewControllerDelegate,
-													  MKReverseGeocoderDelegate>
+													  MKReverseGeocoderDelegate,
+													  UIGestureRecognizerDelegate>
 {
 	IBOutlet UISegmentedControl *destinationControl;
 	IBOutlet UIBarButtonItem *sendButton;
@@ -73,11 +74,13 @@
 - (void) sendEmailTo:(NSArray *)to withSubject:(NSString *) subject withBody:(NSString *)body;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
-// for core data model later
+// for core data model
 - (void)addEvent;
 
 //people picker stuff
 -(IBAction)showPeoplePickerController;
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
 
 @end
 

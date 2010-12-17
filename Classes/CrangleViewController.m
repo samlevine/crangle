@@ -35,7 +35,15 @@
 	
 	[super viewDidLoad];
 	
-	
+	/* Create the Gesture Recognizer */
+	UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]
+												initWithTarget:self
+												action:@selector(pressed:)];
+	//[recoginizer setNumberOfTapsRequired:1];
+	recognizer.minimumPressDuration = 1.0;
+	[centerMapView addGestureRecognizer:recognizer];
+	recognizer.delegate = self;
+	[recognizer release];
 	
 	[[self locationManager] startUpdatingLocation];
 	
@@ -60,6 +68,23 @@
 	
 	
 }
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ((touch.phase == UITouchPhaseBegan)) {
+		NSLog(@"pressed centerMapView");
+        return YES;
+    } else {
+		return NO;
+	}
+}
+
+- (void) pressed:(UITapGestureRecognizer*)sender{
+	if ((sender.state == UIGestureRecognizerStateBegan)) {
+		NSLog(@"pressed");
+    }
+	
+}
+
 
 /**
  Return a location manager -- create one if necessary.
@@ -280,6 +305,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation 
 {
     // this creates a MKReverseGeocoder to find a placemark using the found coordinates
+	// FIXME: figure out the best way to release this as it's currently a memory leak
     MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
     geoCoder.delegate = self;
     [geoCoder start];
