@@ -81,6 +81,15 @@
 - (void) pressed:(UITapGestureRecognizer*)sender{
 	if ((sender.state == UIGestureRecognizerStateBegan)) {
 		NSLog(@"pressed");
+		CGPoint touchPoint = [sender locationInView:self.centerMapView];   
+		CLLocationCoordinate2D touchMapCoordinate = [self.centerMapView 
+													 convertPoint:touchPoint 
+													 toCoordinateFromView:self.centerMapView];
+		
+		MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+		annotation.coordinate = touchMapCoordinate;
+		[self.centerMapView addAnnotation:annotation];
+		[annotation release];
     }
 	
 }
