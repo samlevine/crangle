@@ -90,6 +90,15 @@
 		annotation.coordinate = touchMapCoordinate;
 		[self.centerMapView addAnnotation:annotation];
 		[annotation release];
+		
+		static NSNumberFormatter *numberFormatter = nil;
+		if (numberFormatter == nil) {
+			numberFormatter = [[NSNumberFormatter alloc] init];
+			[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+			//[numberFormatter setMaximumFractionDigits:13];
+		}
+		//FIXME: this is totally broken and must be fixed immediately.
+		self.addressField.text = [NSString stringWithFormat:@"%f,%f", (double)touchMapCoordinate.latitude, (double)touchMapCoordinate.longitude];
     }
 	
 }
