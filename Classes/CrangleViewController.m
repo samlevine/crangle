@@ -85,6 +85,13 @@
 		CLLocationCoordinate2D touchMapCoordinate = [self.centerMapView 
 													 convertPoint:touchPoint 
 													 toCoordinateFromView:self.centerMapView];
+		// remove all other annotations on map
+		for (id annotationToRemove in self.centerMapView.annotations) {
+			if (![annotationToRemove isKindOfClass:[MKUserLocation class]]) {
+				[centerMapView removeAnnotation:annotationToRemove];
+			}
+			
+		}
 		
 		MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
 		annotation.coordinate = touchMapCoordinate;
@@ -97,7 +104,7 @@
 			[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 			//[numberFormatter setMaximumFractionDigits:13];
 		}
-		//FIXME: this is totally broken and must be fixed immediately.
+		//FIXME: ideally this should convert the coordinate into an address
 		self.addressField.text = [NSString stringWithFormat:@"%f,%f", (double)touchMapCoordinate.latitude, (double)touchMapCoordinate.longitude];
     }
 	
