@@ -27,6 +27,7 @@
 		E5520F9F12B07E5700A756C8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9712B07E5700A756C8 /* SBJsonParser.m */; };
 		E5520FA012B07E5700A756C8 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9912B07E5700A756C8 /* SBJsonStreamWriter.m */; };
 		E5520FA112B07E5700A756C8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9B12B07E5700A756C8 /* SBJsonWriter.m */; };
+		E560BD7A12C05F20005CE4CD /* PinPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E560BD7912C05F20005CE4CD /* PinPointAnnotation.m */; };
 		E57CC936128901670098394E /* plusicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E57CC935128901670098394E /* plusicon.jpg */; };
 		E57CC9B1128A556D0098394E /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E57CC9B0128A556D0098394E /* PlusIcon.png */; };
 		E57CCA39128BA25B0098394E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA38128BA25B0098394E /* CoreLocation.framework */; };
@@ -72,6 +73,8 @@
 		E5520F9A12B07E5700A756C8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		E5520F9B12B07E5700A756C8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		E5520F9C12B07E5700A756C8 /* SBProxyForJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBProxyForJson.h; sourceTree = "<group>"; };
+		E560BD7812C05F20005CE4CD /* PinPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinPointAnnotation.h; sourceTree = "<group>"; };
+		E560BD7912C05F20005CE4CD /* PinPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinPointAnnotation.m; sourceTree = "<group>"; };
 		E57CC935128901670098394E /* plusicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plusicon.jpg; sourceTree = "<group>"; };
 		E57CC9B0128A556D0098394E /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
 		E57CCA38128BA25B0098394E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -126,6 +129,8 @@
 				1D3623250D0F684500981E51 /* CrangleAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* CrangleViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* CrangleViewController.m */,
+				E560BD7812C05F20005CE4CD /* PinPointAnnotation.h */,
+				E560BD7912C05F20005CE4CD /* PinPointAnnotation.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 				E5520F9F12B07E5700A756C8 /* SBJsonParser.m in Sources */,
 				E5520FA012B07E5700A756C8 /* SBJsonStreamWriter.m in Sources */,
 				E5520FA112B07E5700A756C8 /* SBJsonWriter.m in Sources */,
+				E560BD7A12C05F20005CE4CD /* PinPointAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

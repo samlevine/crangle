@@ -32,13 +32,15 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MapKit/MKReverseGeocoder.h>
 #import <MapKit/MapKit.h>
+//#import "PinPointAnnotation.h"
 
 
 @interface CrangleViewController : UIViewController < CLLocationManagerDelegate,
 													  ABPeoplePickerNavigationControllerDelegate,
 													  MFMailComposeViewControllerDelegate,
 													  MKReverseGeocoderDelegate,
-													  UIGestureRecognizerDelegate>
+													  UIGestureRecognizerDelegate,
+													  MKMapViewDelegate>
 {
 	IBOutlet UISegmentedControl *destinationControl;
 	IBOutlet UIBarButtonItem *sendButton;
@@ -53,6 +55,7 @@
     CLLocationManager *locationManager;
 	NSString *currentCity;
 	BOOL mapInitialized;
+	//PinPointAnnotation *pinAnnotation;
 }
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *destinationControl;
@@ -68,6 +71,7 @@
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) NSString *currentCity;
 @property (nonatomic) BOOL mapInitialized;
+//@property (nonatomic, retain) PinPointAnnotation *pinAnnotation;
 
 
 -(IBAction) sendButtonClicked: (id) sender;
