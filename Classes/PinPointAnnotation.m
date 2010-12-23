@@ -11,7 +11,7 @@
 
 @implementation PinPointAnnotation
 
-@synthesize coordinate;
+@synthesize coordinate, title, subtitle;
 
 
 @end

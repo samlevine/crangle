@@ -53,6 +53,11 @@
 							<object class="IBUINavigationItem" id="1045158051">
 								<reference key="IBUINavigationBar" ref="427166154"/>
 								<string key="IBUITitle">Crangle</string>
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="520059072">
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<reference key="IBUINavigationItem" ref="1045158051"/>
+									<int key="IBUISystemItemIdentifier">9</int>
+								</object>
 								<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="637732853">
 									<string key="IBUITitle">Send</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -251,6 +256,14 @@
 					</object>
 					<int key="connectionID">28</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">directionButtonClicked:</string>
+						<reference key="source" ref="520059072"/>
+						<reference key="destination" ref="372490531"/>
+					</object>
+					<int key="connectionID">30</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -300,6 +313,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="637732853"/>
+							<reference ref="520059072"/>
 						</object>
 						<reference key="parent" ref="427166154"/>
 					</object>
@@ -332,6 +346,11 @@
 						<reference key="parent" ref="774585933"/>
 						<string key="objectName">centerMapView</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">29</int>
+						<reference key="object" ref="520059072"/>
+						<reference key="parent" ref="1045158051"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -348,6 +367,7 @@
 					<string>13.IBPluginDependency</string>
 					<string>13.IBViewBoundsToFrameTransform</string>
 					<string>26.IBPluginDependency</string>
+					<string>29.IBPluginDependency</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
 					<string>6.IBViewBoundsToFrameTransform</string>
@@ -371,6 +391,7 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABBoAAAw+GAAA</bytes>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{71, 38}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -397,7 +418,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">30</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -409,11 +430,13 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>directionButtonClicked:</string>
 							<string>sendButtonClicked:</string>
 							<string>showPeoplePickerController</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -422,11 +445,16 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>directionButtonClicked:</string>
 							<string>sendButtonClicked:</string>
 							<string>showPeoplePickerController</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">directionButtonClicked:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">sendButtonClicked:</string>
 								<string key="candidateClassName">id</string>

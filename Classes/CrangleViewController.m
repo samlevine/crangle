@@ -94,8 +94,10 @@
 			
 		}
 		
-		MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+		PinPointAnnotation *annotation = [[PinPointAnnotation alloc] init];
 		annotation.coordinate = touchMapCoordinate;
+		annotation.title = @"Destination";
+		annotation.subtitle = @"approximate";
 
 		
 		
@@ -136,7 +138,7 @@
 												   initWithAnnotation:annotation reuseIdentifier:PinAnnotationIdentifier] autorelease];
             //customPinView.pinColor = MKPinAnnotationColorPurple;
             customPinView.animatesDrop = YES;
-            //customPinView.canShowCallout = YES;
+            customPinView.canShowCallout = YES;
             
             // add a detail disclosure button to the callout which will open a new view controller page
             //
@@ -178,7 +180,7 @@
 
 
 
-
+- (void)directionButtonClicked: (id)sender {	}
 
 
 - (void)sendButtonClicked: (id)sender {	
@@ -318,6 +320,12 @@
 		  withSubject:[NSString stringWithFormat:@"I'll be there in about %@ minutes", duration]
 			 withBody:body];
 	
+	// FIXME: this feature doesn't work
+	// currently it opens the maps app before sending off an e-mail
+	//open the maps app
+	//NSURL *mapsURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%@&saddr=%@", destination, origin]];
+	//[[UIApplication sharedApplication] openURL:mapsURL];
+
 }
 
 /* sendEmailTo method thanks to: 
@@ -346,6 +354,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		//FIXME: add alert to end user that they cannot send e-mail
 		
 	}
+
 
 }
 	

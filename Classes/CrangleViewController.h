@@ -32,7 +32,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <MapKit/MKReverseGeocoder.h>
 #import <MapKit/MapKit.h>
-//#import "PinPointAnnotation.h"
+#import "PinPointAnnotation.h"
 
 
 @interface CrangleViewController : UIViewController < CLLocationManagerDelegate,
@@ -75,6 +75,7 @@
 
 
 -(IBAction) sendButtonClicked: (id) sender;
+-(IBAction) directionButtonClicked: (id) sender;
 - (void) sendEmailTo:(NSArray *)to withSubject:(NSString *) subject withBody:(NSString *)body;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
