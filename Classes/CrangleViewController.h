@@ -40,7 +40,8 @@
 													  MFMailComposeViewControllerDelegate,
 													  MKReverseGeocoderDelegate,
 													  UIGestureRecognizerDelegate,
-													  MKMapViewDelegate>
+													  MKMapViewDelegate,
+													  UITextFieldDelegate>
 {
 	IBOutlet UISegmentedControl *destinationControl;
 	IBOutlet UIBarButtonItem *sendButton;
@@ -86,6 +87,9 @@
 -(IBAction)showPeoplePickerController;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
+
+- (NSString *)cleanAddressForSearch:(NSString *)inputAddress;
+- (NSString *)getCurrentOrigin;
 
 @end
 

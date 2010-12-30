@@ -53,8 +53,9 @@
 							<object class="IBUINavigationItem" id="1045158051">
 								<reference key="IBUINavigationBar" ref="427166154"/>
 								<string key="IBUITitle">Crangle</string>
-								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="520059072">
+								<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="610649374">
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="1045158051"/>
 									<int key="IBUISystemItemIdentifier">9</int>
 								</object>
@@ -259,7 +260,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">directionButtonClicked:</string>
-						<reference key="source" ref="520059072"/>
+						<reference key="source" ref="610649374"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">30</int>
@@ -313,7 +314,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="637732853"/>
-							<reference ref="520059072"/>
+							<reference ref="610649374"/>
 						</object>
 						<reference key="parent" ref="427166154"/>
 					</object>
@@ -348,7 +349,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">29</int>
-						<reference key="object" ref="520059072"/>
+						<reference key="object" ref="610649374"/>
 						<reference key="parent" ref="1045158051"/>
 					</object>
 				</object>

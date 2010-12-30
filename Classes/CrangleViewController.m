@@ -178,18 +178,61 @@
 	return locationManager;
 }
 
+- (NSString *)cleanAddressForSearch:(NSString *)inputAddress {
+	
+	NSString *result = [[NSString stringWithFormat:@"%@", inputAddress] lowercaseString];
+	if ([result hasSuffix:@"st"] ||
+		[result hasSuffix:@"street"] ||
+		[result hasSuffix:@"ave"] || 
+		[result hasSuffix:@"avenue"] ||
+		[result hasSuffix:@"lp"] ||
+		[result hasSuffix:@"loop"] ||
+		[result hasSuffix:@"blvd"] ||
+		[result hasSuffix:@"boulevard"] || 
+		[result hasSuffix:@"street"] ||
+		[result hasSuffix:@"dr"] ||
+		[result hasSuffix:@"drive"] ||
+		[result hasSuffix:@"ln"] || 
+		[result hasSuffix:@"lane"] ||
+		[result hasSuffix:@"rd"] ||
+		[result hasSuffix:@"road"] ||
+		[result hasSuffix:@"pl"] || 
+		[result hasSuffix:@"place"] ||
+		[result hasSuffix:@"way"]
+		) 
+	{
+		//current city is determined by geolocation when locationManager:didUpdateToLocation:fromLocation: is called.
+		// this *should* work fine.
+		result = [NSString stringWithFormat:@"%@ %@", result, currentCity];
+	} else {
+		// by defintion
+		//result = [result text];
+	}
+	
+	result = [result stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+	
+	return result;
+}
 
 
-- (void)directionButtonClicked: (id)sender {	}
 
+- (void)directionButtonClicked: (id)sender {	
+	
+	
+	NSString *destination = [self cleanAddressForSearch:[addressField text]];
+	NSString *origin = [self getCurrentOrigin];
+	
+	NSURL *mapsURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%@&saddr=%@", destination, origin]];
+	[[UIApplication sharedApplication] openURL:mapsURL];
+}
 
-- (void)sendButtonClicked: (id)sender {	
+- (NSString *)getCurrentOrigin {
 	
 	// If it's not possible to get a location, then return.
 	// FIXME: let the end user know what happened
 	CLLocation *location = [locationManager location];
 	if (!location) {
-		return;
+		return @"";
 	}
 	
 	[self addEvent];
@@ -221,8 +264,6 @@
 	[mutableFetchResults release];
 	[request release];
 	
-	//[eventsArray getObjects:<#(id *)objects#> range:<#(NSRange)range#>
-	
 	static NSNumberFormatter *numberFormatter = nil;
 	if (numberFormatter == nil) {
 		numberFormatter = [[NSNumberFormatter alloc] init];
@@ -232,35 +273,27 @@
 	//Event *event = (Event *)[eventsArray objectAtIndex:[eventsArray count] -1 ];
 	Event *event = (Event *)[eventsArray objectAtIndex:0];
 	
-	// origin=lat,lon 
-	NSString *addressFieldText = [[addressField text] lowercaseString];
-	NSString *destination;
-	if ([addressFieldText hasSuffix:@"st"] ||
-		[addressFieldText hasSuffix:@"street"] ||
-		[addressFieldText hasSuffix:@"ave"] || 
-		[addressFieldText hasSuffix:@"avenue"] ||
-		[addressFieldText hasSuffix:@"lp"] ||
-		[addressFieldText hasSuffix:@"loop"] ||
-		[addressFieldText hasSuffix:@"blvd"] ||
-		[addressFieldText hasSuffix:@"boulevard"] || 
-		[addressFieldText hasSuffix:@"street"] ||
-		[addressFieldText hasSuffix:@"dr"] ||
-		[addressFieldText hasSuffix:@"drive"] ||
-		[addressFieldText hasSuffix:@"ln"] || 
-		[addressFieldText hasSuffix:@"lane"] ||
-		[addressFieldText hasSuffix:@"rd"] ||
-		[addressFieldText hasSuffix:@"road"] ||
-		[addressFieldText hasSuffix:@"pl"] || 
-		[addressFieldText hasSuffix:@"place"] ||
-		[addressFieldText hasSuffix:@"way"]
-		) 
-	{
-		destination = [NSString stringWithFormat:@"%@ %@", addressFieldText, currentCity];
-	} else {
-		destination = [addressField text];
-	}
+	NSString *origin = [NSString stringWithFormat:@"%@,%@",
+						[numberFormatter stringFromNumber:[event latitude]],
+						[numberFormatter stringFromNumber:[event longitude]]];
+	return origin;
 	
-	destination = [destination stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+}
+
+
+- (void)sendButtonClicked: (id)sender {	
+	
+	NSString *origin = [self getCurrentOrigin];
+	
+	static NSNumberFormatter *numberFormatter = nil;
+	if (numberFormatter == nil) {
+		numberFormatter = [[NSNumberFormatter alloc] init];
+		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		//[numberFormatter setMaximumFractionDigits:13];
+	}
+	Event *event = (Event *)[eventsArray objectAtIndex:0];
+	
+	NSString *destination = [self cleanAddressForSearch:[addressField text]];
 	NSString *travelMethod;
 	switch ([destinationControl selectedSegmentIndex]) {
 		case 1:
@@ -274,14 +307,12 @@
 			break;
 	}
 	
-	NSString *origin = [NSString stringWithFormat:@"%@,%@",
-						[numberFormatter stringFromNumber:[event latitude]],
-						[numberFormatter stringFromNumber:[event longitude]]];
 	
 	//url should be something like http://maps.googleapis.com/maps/api/directions/json?origin=Seattle,WA&destination=Ballard,WA&mode=bicycling&sensor=true
 	NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/directions/json?origin=%@&destination=%@&mode=%@&sensor=true", origin, destination, travelMethod];
 	
 	//NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
+	NSError *error = nil;
 	
 	NSString *directionString = [NSString stringWithContentsOfURL: [NSURL URLWithString:url] encoding:NSASCIIStringEncoding error:&error];
 	
