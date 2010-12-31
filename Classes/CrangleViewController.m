@@ -59,6 +59,17 @@
 	emailField.rightView = _contactsButton;
 	emailField.rightViewMode = UITextFieldViewModeAlways;
 	
+	UIButton *_addressButton = [UIButton buttonWithType:UIButtonTypeCustom];
+	// FIXME: This image is pretty mediocre. It also should be 24 pixels
+	[_addressButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateNormal];
+	//[_contactsButton setImage:[UIImage imageNamed:@"Plusicon.png"] forState:UIControlStateSelected];
+	[_addressButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateHighlighted];
+	_addressButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+	_addressButton.bounds = CGRectMake(0, 0, 24, 24);
+	[_addressButton addTarget:self action:@selector(showPeoplePickerController) forControlEvents:UIControlEventTouchUpInside];
+	addressField.rightView = _addressButton;
+	addressField.rightViewMode = UITextFieldViewModeAlways;
+	
 	//CLLocation *location = [locationManager location];
 	//CLLocationCoordinate2D coordinate = [location coordinate];
 
@@ -600,6 +611,26 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		printf("kABMultiDictionaryPropertyType %s\n",
 			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
 				 objectAtIndex:identifier] description] UTF8String]);
+		for (int i = 0; i < ABMultiValueGetCount(theProperty); i++) {
+			//NSString *label = (NSString *)ABMultiValueCopyLabelAtIndex(theProperty, i);
+			NSDictionary *value = (NSDictionary *)ABMultiValueCopyValueAtIndex(theProperty, i);
+			addressField.text = [NSString stringWithFormat: @"%@ %@ %@ %@",
+								 [value objectForKey: @"Street"],
+								 [value objectForKey: @"City"],
+								 [value objectForKey: @"State"],
+								 [value objectForKey: @"ZIP"]];
+			[self dismissModalViewControllerAnimated:YES];
+			CFRelease(theProperty);
+			return NO;
+			//NSLog(@"%@ %@", label, [value objectForKey: @"City"]);
+		}
+		
+		/* this is broken at the moment.
+		addressField.text = [NSString stringWithFormat:@"%@ %@ %@ %@",
+							 [theProperty valueForKey:@"Street"],
+							 [theProperty valueForKey:@"City"],
+							 [theProperty valueForKey:@"State"],
+							 [theProperty valueForKey:@"ZIP"]];*/
 	}
 	
 	
@@ -623,7 +654,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
 	// Display only a person's email
-	NSArray *displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonEmailProperty], nil];
+	NSArray *displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonEmailProperty], [NSNumber numberWithInt:kABPersonAddressProperty], nil];
 	
 	
 	picker.displayedProperties = displayedItems;
