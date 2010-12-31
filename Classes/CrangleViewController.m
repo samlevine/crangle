@@ -79,6 +79,35 @@
 	}
 }
 
+- (void)addCoordinateAsPin:(CLLocationCoordinate2D) mapCoordinate
+		   annotationTitle:(NSString *)annotationTitle annotationSubtitle:(NSString *) annotationSubtitle { 
+	
+	// remove all other annotations on map
+	for (id annotationToRemove in self.centerMapView.annotations) {
+		if (![annotationToRemove isKindOfClass:[MKUserLocation class]]) {
+			CLLocationCoordinate2D thisCoordinate = [annotationToRemove coordinate];
+			if (thisCoordinate.latitude == mapCoordinate.latitude && thisCoordinate.longitude == mapCoordinate.longitude) {
+				//the points are the same
+				return;
+			}
+			[centerMapView removeAnnotation:annotationToRemove];
+		}
+		
+	}
+	
+	PinPointAnnotation *annotation = [[PinPointAnnotation alloc] init];
+	annotation.coordinate = mapCoordinate;
+	annotation.title = annotationTitle;
+	annotation.subtitle = annotationSubtitle;
+	
+	
+	
+	
+	[self.centerMapView addAnnotation:annotation];
+	[annotation release];
+	
+}
+
 - (void) pressed:(UITapGestureRecognizer*)sender{
 	if ((sender.state == UIGestureRecognizerStateBegan)) {
 		NSLog(@"pressed");
@@ -86,24 +115,8 @@
 		CLLocationCoordinate2D touchMapCoordinate = [self.centerMapView 
 													 convertPoint:touchPoint 
 													 toCoordinateFromView:self.centerMapView];
-		// remove all other annotations on map
-		for (id annotationToRemove in self.centerMapView.annotations) {
-			if (![annotationToRemove isKindOfClass:[MKUserLocation class]]) {
-				[centerMapView removeAnnotation:annotationToRemove];
-			}
-			
-		}
 		
-		PinPointAnnotation *annotation = [[PinPointAnnotation alloc] init];
-		annotation.coordinate = touchMapCoordinate;
-		annotation.title = @"Destination";
-		annotation.subtitle = @"approximate";
-
-		
-		
-		
-		[self.centerMapView addAnnotation:annotation];
-		[annotation release];
+		[self addCoordinateAsPin:touchMapCoordinate annotationTitle:@"Destination" annotationSubtitle:@"approximate"];
 		
 		static NSNumberFormatter *numberFormatter = nil;
 		if (numberFormatter == nil) {
@@ -409,6 +422,38 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		
 	if ([textField isEqual:emailField])
 	{
+		if ([[addressField text] length]!= 0) {
+			// should try to geocode destination address and drop pin
+			NSString *destination = [self cleanAddressForSearch:[addressField text]];
+			NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", destination];
+			
+			//NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
+			NSError *error = nil;
+			
+			NSString *geocodeResults = [NSString stringWithContentsOfURL: [NSURL URLWithString:url] encoding:NSASCIIStringEncoding error:&error];
+			
+			NSDictionary *geocodeDictionary = [geocodeResults JSONValue];
+			NSArray *geocodeArray = [geocodeDictionary objectForKey:@"results"];
+			
+			NSString *lat;
+			NSString *lng;
+			
+			for (NSDictionary *result in geocodeArray) {
+				
+				lat = [[[result objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"];
+				lng = [[[result objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"];
+			}
+			NSLog(@"%@, %@", lat, lng);
+			
+			
+			CLLocationCoordinate2D geocodedMapCoordinate;
+			geocodedMapCoordinate.latitude = [lat doubleValue];
+			geocodedMapCoordinate.longitude = [lng doubleValue];
+			
+			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:@"approximate"];
+			
+			
+		}
 		[textField resignFirstResponder];
 	}
 	return NO;

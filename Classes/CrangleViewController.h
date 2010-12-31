@@ -87,6 +87,8 @@
 -(IBAction)showPeoplePickerController;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
+- (void)addCoordinateAsPin:(CLLocationCoordinate2D) mapCoordinate
+		   annotationTitle:(NSString *)annotationTitle annotationSubtitle:(NSString *) annotationSubtitle;
 
 - (NSString *)cleanAddressForSearch:(NSString *)inputAddress;
 - (NSString *)getCurrentOrigin;
