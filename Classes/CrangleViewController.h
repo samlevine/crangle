@@ -78,6 +78,7 @@
 -(IBAction) sendButtonClicked: (id) sender;
 -(IBAction) directionButtonClicked: (id) sender;
 - (void) sendEmailTo:(NSArray *)to withSubject:(NSString *) subject withBody:(NSString *)body;
+- (CLLocationCoordinate2D)geocodeAddressIntoCoordinate: (NSString *)address;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 // for core data model

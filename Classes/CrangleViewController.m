@@ -234,6 +234,8 @@
 	}
 	
 	result = [result stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+	result = [result stringByReplacingOccurrencesOfString:@"#" withString:@"%23"];
+	result = [result stringByReplacingOccurrencesOfString:@"&" withString:@"%26"];
 	
 	return result;
 }
@@ -375,11 +377,6 @@
 		  withSubject:[NSString stringWithFormat:@"I'll be there in about %@ minutes", duration]
 			 withBody:body];
 	
-	// FIXME: this feature doesn't work
-	// currently it opens the maps app before sending off an e-mail
-	//open the maps app
-	//NSURL *mapsURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://maps.google.com/maps?daddr=%@&saddr=%@", destination, origin]];
-	//[[UIApplication sharedApplication] openURL:mapsURL];
 
 }
 
@@ -423,7 +420,35 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	
 	
 	
-
+- (CLLocationCoordinate2D)geocodeAddressIntoCoordinate: (NSString *)address {
+	
+	NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", address];
+	
+	//NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
+	NSError *error = nil;
+	
+	NSString *geocodeResults = [NSString stringWithContentsOfURL: [NSURL URLWithString:url] encoding:NSASCIIStringEncoding error:&error];
+	
+	NSDictionary *geocodeDictionary = [geocodeResults JSONValue];
+	NSArray *geocodeArray = [geocodeDictionary objectForKey:@"results"];
+	
+	NSString *lat;
+	NSString *lng;
+	
+	for (NSDictionary *result in geocodeArray) {
+		
+		lat = [[[result objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"];
+		lng = [[[result objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"];
+	}
+	//NSLog(@"%@, %@", lat, lng);
+	
+	
+	CLLocationCoordinate2D returnGeocodedMapCoordinate;
+	returnGeocodedMapCoordinate.latitude = [lat doubleValue];
+	returnGeocodedMapCoordinate.longitude = [lng doubleValue];
+	return returnGeocodedMapCoordinate;
+	
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	if ([textField isEqual:addressField])
@@ -436,34 +461,8 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		if ([[addressField text] length]!= 0) {
 			// should try to geocode destination address and drop pin
 			NSString *destination = [self cleanAddressForSearch:[addressField text]];
-			NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/geocode/json?address=%@&sensor=true", destination];
-			
-			//NSData *directionData = [NSData dataWithContentsOfURL: [NSURL URLWithString:url]];
-			NSError *error = nil;
-			
-			NSString *geocodeResults = [NSString stringWithContentsOfURL: [NSURL URLWithString:url] encoding:NSASCIIStringEncoding error:&error];
-			
-			NSDictionary *geocodeDictionary = [geocodeResults JSONValue];
-			NSArray *geocodeArray = [geocodeDictionary objectForKey:@"results"];
-			
-			NSString *lat;
-			NSString *lng;
-			
-			for (NSDictionary *result in geocodeArray) {
-				
-				lat = [[[result objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lat"];
-				lng = [[[result objectForKey:@"geometry"] objectForKey:@"location"] objectForKey:@"lng"];
-			}
-			NSLog(@"%@, %@", lat, lng);
-			
-			
-			CLLocationCoordinate2D geocodedMapCoordinate;
-			geocodedMapCoordinate.latitude = [lat doubleValue];
-			geocodedMapCoordinate.longitude = [lng doubleValue];
-			
+			CLLocationCoordinate2D geocodedMapCoordinate = [self geocodeAddressIntoCoordinate:destination];
 			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:@"approximate"];
-			
-			
 		}
 		[textField resignFirstResponder];
 	}
@@ -619,6 +618,12 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 								 [value objectForKey: @"City"],
 								 [value objectForKey: @"State"],
 								 [value objectForKey: @"ZIP"]];
+			//[self addEvent];
+			
+			NSString *destination = [self cleanAddressForSearch:[addressField text]];
+			CLLocationCoordinate2D geocodedMapCoordinate = [self geocodeAddressIntoCoordinate:destination];
+			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:addressField.text];
+			
 			[self dismissModalViewControllerAnimated:YES];
 			CFRelease(theProperty);
 			return NO;
