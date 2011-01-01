@@ -55,7 +55,8 @@
 	[_contactsButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateHighlighted];
 	_contactsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 	_contactsButton.bounds = CGRectMake(0, 0, 24, 24);
-	[_contactsButton addTarget:self action:@selector(showPeoplePickerController) forControlEvents:UIControlEventTouchUpInside];
+	[_contactsButton addTarget:self action:@selector(showPeoplePickerController:) forControlEvents:UIControlEventTouchUpInside];
+	_contactsButton.tag = 1;
 	emailField.rightView = _contactsButton;
 	emailField.rightViewMode = UITextFieldViewModeAlways;
 	
@@ -66,7 +67,8 @@
 	[_addressButton setImage:[UIImage imageNamed:@"PlusIcon.png"] forState:UIControlStateHighlighted];
 	_addressButton.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 	_addressButton.bounds = CGRectMake(0, 0, 24, 24);
-	[_addressButton addTarget:self action:@selector(showPeoplePickerController) forControlEvents:UIControlEventTouchUpInside];
+	[_addressButton addTarget:self action:@selector(showPeoplePickerController:) forControlEvents:UIControlEventTouchUpInside];
+	_addressButton.tag = 2;
 	addressField.rightView = _addressButton;
 	addressField.rightViewMode = UITextFieldViewModeAlways;
 	
@@ -654,12 +656,22 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 
 // Called when users tap "Display Picker" in the application. Displays a list of contacts and allows users to select a contact from that list.
 // The application only shows the phone, email, and birthdate information of the selected contact.
--(void)showPeoplePickerController
+-(void)showPeoplePickerController:(id) sender
 {
 	ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
 	// Display only a person's email
-	NSArray *displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonEmailProperty], [NSNumber numberWithInt:kABPersonAddressProperty], nil];
+	NSArray *displayedItems;
+	if ([sender tag] == 1) {
+		displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonEmailProperty], nil];
+	} else if ([sender tag] == 2) {
+		displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonAddressProperty], nil];
+	} else {
+		return;
+	}
+
+	//NSArray *displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonEmailProperty], [NSNumber numberWithInt:kABPersonAddressProperty], nil];
+
 	
 	
 	picker.displayedProperties = displayedItems;

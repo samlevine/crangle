@@ -85,7 +85,7 @@
 - (void)addEvent;
 
 //people picker stuff
--(IBAction)showPeoplePickerController;
+-(IBAction)showPeoplePickerController: (id) sender;
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;
 - (void)addCoordinateAsPin:(CLLocationCoordinate2D) mapCoordinate
