@@ -482,7 +482,6 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation 
 {
     // this creates a MKReverseGeocoder to find a placemark using the found coordinates
-	// FIXME: figure out the best way to release this as it's currently a memory leak
     MKReverseGeocoder *geoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
     geoCoder.delegate = self;
     [geoCoder start];
@@ -511,7 +510,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		mapInitialized = YES;
 	}
 
-	
+	[geocoder release];
 	
 	//[centerMapView setCenterCoordinate:coordinate animated:YES];
 }
@@ -520,6 +519,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
 {
     NSLog(@"reverseGeocoder:%@ didFailWithError:%@", geocoder, error);
+	[geocoder release];
 }
 
 - (void)addEvent {
