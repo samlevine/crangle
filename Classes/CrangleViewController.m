@@ -311,6 +311,12 @@
 
 - (void)sendButtonClicked: (id)sender {	
 	
+	if ([[[addressField text] stringByReplacingOccurrencesOfString:@" " withString:@""] length] == 0 ||
+		[[[emailField text] stringByReplacingOccurrencesOfString:@" " withString:@""] length] == 0) {
+		NSLog(@"need text");
+		return;
+	}
+	
 	NSString *origin = [self getCurrentOrigin];
 	
 	static NSNumberFormatter *numberFormatter = nil;
@@ -460,7 +466,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		
 	if ([textField isEqual:emailField])
 	{
-		if ([[addressField text] length]!= 0) {
+		if ([[[addressField text] stringByReplacingOccurrencesOfString:@" " withString:@""] length]!= 0) {
 			// should try to geocode destination address and drop pin
 			NSString *destination = [self cleanAddressForSearch:[addressField text]];
 			CLLocationCoordinate2D geocodedMapCoordinate = [self geocodeAddressIntoCoordinate:destination];
