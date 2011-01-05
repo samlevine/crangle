@@ -582,42 +582,45 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 {
 	id theProperty = (id)ABRecordCopyValue(person, property);
 	int propertyType = ABPersonGetTypeOfProperty(property);
+	//NSArray *thisArray;
 	
 	if (propertyType == kABStringPropertyType) {
-		printf("kABStringPropertyType %s\n", [theProperty UTF8String]);
+		//printf("kABStringPropertyType %s\n", [theProperty UTF8String]);
 	} else if (propertyType == kABIntegerPropertyType) {
-		printf("kABIntegerPropertyType %d\n", [theProperty integerValue]);
+		//printf("kABIntegerPropertyType %d\n", [theProperty integerValue]);
 	} else if (propertyType == kABRealPropertyType) {
-		printf("kABRealPropertyType %f\n", [theProperty floatValue]);
+		//printf("kABRealPropertyType %f\n", [theProperty floatValue]);
 	} else if (propertyType == kABDateTimePropertyType) {
-		printf("kABDateTimePropertyType %s\n", [[theProperty description] UTF8String]);
+		//printf("kABDateTimePropertyType %s\n", [[theProperty description] UTF8String]);
 	} else if (propertyType == kABMultiStringPropertyType) {
-		printf("kABMultiStringPropertyType %s\n",
+		/*printf("kABMultiStringPropertyType %s\n",
 			   [[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
-				 objectAtIndex:identifier] UTF8String]);
-		emailField.text = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
+				 objectAtIndex:identifier] UTF8String]);*/
+		NSString *thisString = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
+		emailField.text = thisString;
 		
 		[self dismissModalViewControllerAnimated:YES];
+		[thisString release];
 		CFRelease(theProperty);
 		return NO;
 	} else if (propertyType == kABMultiIntegerPropertyType) {
-		printf("kABMultiIntegerPropertyType %d\n",
+		/*printf("kABMultiIntegerPropertyType %d\n",
 			   [[(NSArray *)
 				 ABMultiValueCopyArrayOfAllValues(theProperty)
-				 objectAtIndex:identifier] integerValue]);
+				 objectAtIndex:identifier] integerValue]);*/
 	} else if (propertyType == kABMultiRealPropertyType) {
-		printf("kABMultiRealPropertyType %f\n",
+		/*printf("kABMultiRealPropertyType %f\n",
 			   [[(NSArray *)
 				 ABMultiValueCopyArrayOfAllValues(theProperty)
-				 objectAtIndex:identifier] floatValue]);
+				 objectAtIndex:identifier] floatValue]);*/
 	} else if (propertyType == kABMultiDateTimePropertyType) {
-		printf("kABMultiDateTimePropertyType %s\n",
+		/*printf("kABMultiDateTimePropertyType %s\n",
 			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
-				  objectAtIndex:identifier] description] UTF8String]);
+				  objectAtIndex:identifier] description] UTF8String]);*/
 	} else if (propertyType == kABMultiDictionaryPropertyType) {
-		printf("kABMultiDictionaryPropertyType %s\n",
+		/*printf("kABMultiDictionaryPropertyType %s\n",
 			   [[[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
-				 objectAtIndex:identifier] description] UTF8String]);
+				 objectAtIndex:identifier] description] UTF8String]);*/
 		for (int i = 0; i < ABMultiValueGetCount(theProperty); i++) {
 			//NSString *label = (NSString *)ABMultiValueCopyLabelAtIndex(theProperty, i);
 			NSDictionary *value = (NSDictionary *)ABMultiValueCopyValueAtIndex(theProperty, i);
@@ -634,6 +637,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 			
 			[self dismissModalViewControllerAnimated:YES];
 			CFRelease(theProperty);
+			[value release];
 			return NO;
 			//NSLog(@"%@ %@", label, [value objectForKey: @"City"]);
 		}
@@ -673,6 +677,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	} else if ([sender tag] == 2) {
 		displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonAddressProperty], nil];
 	} else {
+		[picker release];
 		return;
 	}
 
@@ -681,9 +686,9 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	
 	
 	picker.displayedProperties = displayedItems;
-	// Show the picker 
+	// Show the picker
 	[self presentModalViewController:picker animated:YES];
-    [picker release];	
+	[picker release];
 }
 
 #pragma mark cleanup
