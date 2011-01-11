@@ -638,8 +638,8 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 			
 			NSString *destination = [self cleanAddressForSearch:[addressField text]];
 			CLLocationCoordinate2D geocodedMapCoordinate = [self geocodeAddressIntoCoordinate:destination];
-			//[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:addressField.text];
-			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:@"test"];
+			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:addressField.text];
+			//[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:@"test"];
 			
 			[self dismissModalViewControllerAnimated:YES];
 			//peoplePicker.displayedProperties = nil;
