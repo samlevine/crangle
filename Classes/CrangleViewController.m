@@ -30,7 +30,7 @@
 @implementation CrangleViewController
 
 @synthesize destinationControl, sendButton, addressField, emailField, centerMapView, contactsButton, eventsArray, 
-			managedObjectContext, locationManager, currentCity, mapInitialized;
+			managedObjectContext, locationManager, currentCity, mapInitialized, thePicker;
 
 - (void)viewDidLoad {
 	
@@ -596,12 +596,17 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 		/*printf("kABMultiStringPropertyType %s\n",
 			   [[(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty)
 				 objectAtIndex:identifier] UTF8String]);*/
-		NSString *thisString = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
+		//NSString *thisString = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
+		NSArray *thisArray = (NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty);
+		NSString *thisString = [thisArray objectAtIndex:identifier];
 		emailField.text = thisString;
 		
+
 		[self dismissModalViewControllerAnimated:YES];
 		[thisString release];
+		[thisArray release];
 		CFRelease(theProperty);
+		//[peoplePicker release];
 		return NO;
 	} else if (propertyType == kABMultiIntegerPropertyType) {
 		/*printf("kABMultiIntegerPropertyType %d\n",
@@ -633,11 +638,15 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 			
 			NSString *destination = [self cleanAddressForSearch:[addressField text]];
 			CLLocationCoordinate2D geocodedMapCoordinate = [self geocodeAddressIntoCoordinate:destination];
-			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:addressField.text];
+			//[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:addressField.text];
+			[self addCoordinateAsPin:geocodedMapCoordinate annotationTitle:@"Destination" annotationSubtitle:@"test"];
 			
 			[self dismissModalViewControllerAnimated:YES];
+			//peoplePicker.displayedProperties = nil;
+			
 			CFRelease(theProperty);
 			[value release];
+			//[peoplePicker release];
 			return NO;
 			//NSLog(@"%@ %@", label, [value objectForKey: @"City"]);
 		}
@@ -654,7 +663,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	//emailField.text = [(NSArray *)ABMultiValueCopyArrayOfAllValues(theProperty) objectAtIndex:identifier];
 	
 	//[self dismissModalViewControllerAnimated:YES];
-	//CFRelease(theProperty);
+	CFRelease(theProperty);
 	return NO;
 }
 
@@ -662,14 +671,21 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker;
 {
 	[self dismissModalViewControllerAnimated:YES];
+	//[peoplePicker release];
 }
 
 // Called when users tap "Display Picker" in the application. Displays a list of contacts and allows users to select a contact from that list.
 // The application only shows the phone, email, and birthdate information of the selected contact.
 -(void)showPeoplePickerController:(id) sender
 {
-	ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.peoplePickerDelegate = self;
+	//ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+	
+	if (thePicker == nil) {
+		thePicker = [[ABPeoplePickerNavigationController alloc] init];
+	}
+	
+	
+    thePicker.peoplePickerDelegate = self;
 	// Display only a person's email
 	NSArray *displayedItems;
 	if ([sender tag] == 1) {
@@ -677,7 +693,7 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 	} else if ([sender tag] == 2) {
 		displayedItems = [NSArray arrayWithObjects: [NSNumber numberWithInt:kABPersonAddressProperty], nil];
 	} else {
-		[picker release];
+		//[picker release];
 		return;
 	}
 
@@ -685,10 +701,10 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 
 	
 	
-	picker.displayedProperties = displayedItems;
+	thePicker.displayedProperties = displayedItems;
 	// Show the picker
-	[self presentModalViewController:picker animated:YES];
-	[picker release];
+	[self presentModalViewController:thePicker animated:YES];
+	//[picker release];
 }
 
 #pragma mark cleanup
@@ -713,6 +729,9 @@ Dan Grigsby: http://mobileorchard.com/new-in-iphone-30-tutorial-series-part-2-in
 - (void)dealloc {
 	[contactsButton release];
     [super dealloc];
+	if (thePicker != nil) {
+		[thePicker release];
+	}
 }
 
 @end

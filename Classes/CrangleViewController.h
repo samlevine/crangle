@@ -57,6 +57,7 @@
 	NSString *currentCity;
 	BOOL mapInitialized;
 	//PinPointAnnotation *pinAnnotation;
+	ABPeoplePickerNavigationController *thePicker;
 }
 
 @property (nonatomic, retain) IBOutlet UISegmentedControl *destinationControl;
@@ -73,6 +74,7 @@
 @property (nonatomic, retain) NSString *currentCity;
 @property (nonatomic) BOOL mapInitialized;
 //@property (nonatomic, retain) PinPointAnnotation *pinAnnotation;
+@property (nonatomic, retain) ABPeoplePickerNavigationController *thePicker;
 
 
 -(IBAction) sendButtonClicked: (id) sender;
