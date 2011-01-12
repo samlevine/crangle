@@ -28,7 +28,6 @@
 		E5520FA012B07E5700A756C8 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9912B07E5700A756C8 /* SBJsonStreamWriter.m */; };
 		E5520FA112B07E5700A756C8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E5520F9B12B07E5700A756C8 /* SBJsonWriter.m */; };
 		E560BD7A12C05F20005CE4CD /* PinPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E560BD7912C05F20005CE4CD /* PinPointAnnotation.m */; };
-		E57CC936128901670098394E /* plusicon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E57CC935128901670098394E /* plusicon.jpg */; };
 		E57CC9B1128A556D0098394E /* PlusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E57CC9B0128A556D0098394E /* PlusIcon.png */; };
 		E57CCA39128BA25B0098394E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E57CCA38128BA25B0098394E /* CoreLocation.framework */; };
 		E57CCA55128BA4DA0098394E /* Crangle.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */; };
@@ -38,6 +37,7 @@
 		E5B04D3B12B472780089FC0B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5B04D3A12B472780089FC0B /* MapKit.framework */; };
 		E5D4D1AC12A8A3EB003DAC28 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D4D1AB12A8A3EB003DAC28 /* AddressBook.framework */; };
 		E5D4D1AE12A8A3EB003DAC28 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D4D1AD12A8A3EB003DAC28 /* AddressBookUI.framework */; };
+		E5FCC35E12DD4BEC0038C908 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E5FCC35D12DD4BEC0038C908 /* Default@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +75,6 @@
 		E5520F9C12B07E5700A756C8 /* SBProxyForJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBProxyForJson.h; sourceTree = "<group>"; };
 		E560BD7812C05F20005CE4CD /* PinPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinPointAnnotation.h; sourceTree = "<group>"; };
 		E560BD7912C05F20005CE4CD /* PinPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinPointAnnotation.m; sourceTree = "<group>"; };
-		E57CC935128901670098394E /* plusicon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = plusicon.jpg; sourceTree = "<group>"; };
 		E57CC9B0128A556D0098394E /* PlusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlusIcon.png; sourceTree = "<group>"; };
 		E57CCA38128BA25B0098394E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Crangle.xcdatamodel; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		E5B04D3A12B472780089FC0B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E5D4D1AB12A8A3EB003DAC28 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E5D4D1AD12A8A3EB003DAC28 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		E5FCC35D12DD4BEC0038C908 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E51DDB0112B725B1002482C2 /* Default.png */,
+				E5FCC35D12DD4BEC0038C908 /* Default@2x.png */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -177,7 +178,6 @@
 				E51DDADC12B5CF34002482C2 /* Icon.png */,
 				E51DDADD12B5CF34002482C2 /* Icon@2x.png */,
 				E57CCA54128BA4DA0098394E /* Crangle.xcdatamodel */,
-				E57CC935128901670098394E /* plusicon.jpg */,
 				E57CC9B0128A556D0098394E /* PlusIcon.png */,
 				2899E5210DE3E06400AC0155 /* CrangleViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -251,7 +251,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* CrangleViewController.xib in Resources */,
-				E57CC936128901670098394E /* plusicon.jpg in Resources */,
 				E57CC9B1128A556D0098394E /* PlusIcon.png in Resources */,
 				E51DDADE12B5CF34002482C2 /* Icon-72.png in Resources */,
 				E51DDADF12B5CF34002482C2 /* Icon-Small-50.png in Resources */,
@@ -260,6 +259,7 @@
 				E51DDAE212B5CF34002482C2 /* Icon.png in Resources */,
 				E51DDAE312B5CF34002482C2 /* Icon@2x.png in Resources */,
 				E51DDB0212B725B1002482C2 /* Default.png in Resources */,
+				E5FCC35E12DD4BEC0038C908 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
