@@ -24,6 +24,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "Reachability.h"
 
 @class CrangleViewController;
 
@@ -35,6 +36,7 @@
     NSManagedObjectContext *managedObjectContext;
 	//UIView *loadingView;
 	//UIActivityIndicatorView *loadingAnimationIndicator;
+	//BOOL userNotifiedOfNoInternet;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -46,6 +48,8 @@
 
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, readonly) NSString *applicationDocumentsDirectory;
+//@property (nonatomic) BOOL userNotifiedOfNoInternet;
+- (void) updateInterfaceWithReachability: (Reachability*) curReach;
 
 @end
 

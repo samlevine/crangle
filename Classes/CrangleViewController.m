@@ -77,10 +77,14 @@
 
 	//[NSNumber numberWithDouble:coordinate.latitude];
 	//[NSNumber numberWithDouble:coordinate.longitude];
-	 
-	 
 	
-	
+	//Change the host name here to change the server your monitoring
+    //remoteHostLabel.text = [NSString stringWithFormat: @"Remote Host: %@", @"www.apple.com"];
+	//CrangleAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	Reachability* hostReach = [[Reachability reachabilityWithHostName: @"www.apple.com"] retain];
+	[hostReach startNotifier];
+	//[appDelegate updateInterfaceWithReachability: hostReach];
+	 
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {

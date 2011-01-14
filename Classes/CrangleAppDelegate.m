@@ -25,10 +25,12 @@
 #import "CrangleAppDelegate.h"
 #import "CrangleViewController.h"
 
+
 @implementation CrangleAppDelegate
 
 @synthesize window;
 @synthesize viewController;
+//@synthesize userNotifiedOfNoInternet;
 //@synthesize loadingView;
 //@synthesize loadingAnimationIndicator;
 
@@ -67,6 +69,13 @@
 
 	[viewController setManagedObjectContext:context];
 	
+	// Observe the kNetworkReachabilityChangedNotification. When that notification is posted, the
+    // method "reachabilityChanged" will be called. 
+	//userNotifiedOfNoInternet = NO;
+	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
+	
+
+
 
     return YES;
 }
@@ -113,6 +122,34 @@
 			// Handle the error.
         } 
     }
+}
+
+- (void) updateInterfaceWithReachability: (Reachability*) curReach
+{
+
+		//[self configureTextField: remoteHostStatusField imageView: remoteHostIcon reachability: curReach];
+        NetworkStatus netStatus = [curReach currentReachabilityStatus];
+		
+		if (netStatus == NotReachable) {
+			
+			UIAlertView *alert = [[UIAlertView alloc]
+								  initWithTitle: @"No Internet Access"
+								  message: @"Crangle requires Internet access to function"
+								  delegate: nil
+								  cancelButtonTitle:@"OK"
+								  otherButtonTitles:nil];
+			[alert show];
+			[alert release];
+			
+		}
+}
+
+//Called by Reachability whenever status changes.
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	Reachability* curReach = [note object];
+	NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+	[self updateInterfaceWithReachability: curReach];
 }
 
 #pragma mark -
